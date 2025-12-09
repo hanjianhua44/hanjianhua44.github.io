@@ -27,19 +27,12 @@
         a:hover { text-decoration: underline; }
         .badges { margin: 15px 0; }
         .badges img { margin: 0 5px; height: 28px; }
-        .highlight-box {
-            background-color: #e6ffed;
-            border: 1px solid #bef5cb;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 20px 0;
-        }
-        .highlight-title { font-weight: bold; color: #22863a; }
         .hiring-box {
             background-color: #f1f8ff;
             border: 1px solid #c8e1ff;
             padding: 15px;
             border-radius: 6px;
+            margin-top: 20px;
         }
         .intro-quote {
             font-style: italic;
@@ -50,17 +43,29 @@
         ul { padding-left: 20px; }
         li { margin-bottom: 8px; }
         .footer {
-            margin-top: 50px;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eaecef;
             text-align: center;
-            font-size: 0.8em;
+            font-size: 0.85em;
             color: #586069;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        /* 针对新文章的强调样式 */
+        .new-paper {
+            background-color: #fffbdd; /* 淡淡的黄色背景 */
+            padding: 2px 5px;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Hi there, I'm Jianhua Han👋</h1>
+    <h1>Hi there, I'm Jianhua Han (韩建华) 👋</h1>
     <div class="badges">
         <a href="https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en">
             <img src="https://img.shields.io/badge/Google%20Scholar-Jianhua%20Han-4285F4?style=for-the-badge&logo=google-scholar&logoColor=white" alt="Google Scholar">
@@ -77,7 +82,7 @@
 <section>
     <h2>🚀 About Me</h2>
     <p>I am currently a <strong>Principal Engineer</strong> at <strong>2030 Lab, Yinwang Intelligent Technology Co. Ltd</strong>. Previously, I worked as a Research Scientist at <strong>Huawei Noah's Ark Lab</strong>.</p>
-    <p>My current research focus is <strong>Vision-Language-Action (VLA) Models</strong>, <strong>World Models</strong>, and <strong>Embodied AI</strong> for robust end-to-end autonomous driving and general-purpose agents.</p>
+    <p>My research interests lie in <strong>Vision-Language-Action (VLA) Models</strong>, <strong>World Models</strong>, and <strong>Physical AI</strong> (integrating Autonomous Driving & Robotics).</p>
     <ul>
         <li>📍 <strong>Location:</strong> Shanghai, China</li>
         <li>🎓 <strong>Education:</strong> M.S. & B.S. (IEEE Class) from <strong>Shanghai Jiao Tong University (SJTU)</strong>.</li>
@@ -85,20 +90,11 @@
     </ul>
 </section>
 
-<section class="highlight-box">
-    <div class="highlight-title">🔥 Featured Work</div>
-    <p><strong>[New] Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving</strong></p>
-    <ul>
-        <li><em>Focus:</em> Integrating perception features into World Models to enhance robustness in end-to-end autonomous driving.</li>
-        <li><em>Status:</em> <strong>Highlighted Research</strong></li>
-    </ul>
-</section>
-
 <section class="hiring-box">
     <h3>📢 Hiring & Collaboration</h3>
     <p>I am actively looking for self-motivated <strong>Interns</strong> and <strong>Full-time Researchers/Engineers</strong> to join our team at <strong>2030 Lab, Yinwang</strong>.</p>
     <ul>
-        <li><strong>Focus Areas:</strong> Vision-Language-Action (VLA), World Models, End-to-End Autonomous Driving, and Embodied AI Agents.</li>
+        <li><strong>Focus Areas:</strong> Physical AI, VLA, World Models, End-to-End Autonomous Driving, and General-purpose Agents.</li>
         <li>If you are interested in building the next generation of intelligent systems, please email me at <a href="mailto:hanjianhua2012@gmail.com">hanjianhua2012@gmail.com</a>.</li>
     </ul>
 </section>
@@ -108,8 +104,8 @@
     
     <h3>Principal Engineer @ 2030 Lab, Yinwang Intelligent Technology (2025 – Present)</h3>
     <ul>
-        <li>Leading research on <strong>Vision-Language-Action (VLA)</strong> models and <strong>World Models</strong> for autonomous driving.</li>
-        <li>Focusing on visual understanding, reasoning capabilities, and decision-making in complex open-world environments.</li>
+        <li>Constructing research on <strong>Vision-Language-Action (VLA)</strong> models and <strong>World Models</strong> for <strong>Physical AI</strong>.</li>
+        <li>Focusing on visual understanding, reasoning capabilities, and decision-making in complex open-world environments (AD & Robotics).</li>
     </ul>
 
     <h3>Research Scientist @ Huawei Noah's Ark Lab (2019 – 2025)</h3>
@@ -128,9 +124,11 @@
 <section>
     <h2>📝 Selected Publications</h2>
 
-    <h3>1. Vision-Language-Action (VLA) & Embodied AI</h3>
-    <p><em>Recent focus on integrating reasoning with action for AD and Robots.</em></p>
+    <h3>1. Vision-Language-Action (VLA) & Embodied AI (Physical AI)</h3>
+    <p><em>Focus: Integrating reasoning with action for Robotics and Autonomous Driving.</em></p>
     <ul>
+        <li class="new-paper"><strong>[New] Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving.</strong><br>
+            <em>Focus: Integrating perception features into World Models to enhance robustness.</em></li>
         <li><strong>Reason2drive: Towards interpretable and chain-based reasoning for autonomous driving.</strong> (ECCV)<br>
             M Nie, R Peng, C Wang, X Cai, <strong>J Han</strong>, H Xu, L Zhang</li>
         <li><strong>Navcot: Boosting LLM-based vision-and-language navigation via learning disentangled reasoning.</strong> (TPAMI)<br>
@@ -161,7 +159,9 @@
 </section>
 
 <div class="footer">
-    <p>© 2024 Jianhua Han. Hosted on GitHub Pages.</p>
+    <a href="https://info.flagcounter.com/MYCODE"><img src="https://s11.flagcounter.com/count2/MYCODE/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+    
+    <p style="margin-top: 10px;">© 2024 Jianhua Han. Hosted on GitHub Pages.</p>
 </div>
 
 </body>
