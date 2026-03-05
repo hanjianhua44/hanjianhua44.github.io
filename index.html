@@ -47,12 +47,156 @@
             100% { opacity: 0.8; transform: scale(1.2); }
         }
 
+        /* === Bunting Flags === */
+        .bunting {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .bunting svg { width: 100%; height: 100%; }
+
+        /* === Floating Characters === */
+        .floating-chars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .float-char {
+            position: absolute;
+            font-size: 2em;
+            animation: floatUp var(--dur) ease-in-out infinite;
+            animation-delay: var(--delay);
+            opacity: 0.6;
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            25% { transform: translateY(-20px) rotate(5deg); opacity: 0.8; }
+            50% { transform: translateY(-35px) rotate(-3deg); opacity: 0.7; }
+            75% { transform: translateY(-15px) rotate(4deg); opacity: 0.8; }
+        }
+
+        /* === Cute Robot (CSS Art) === */
+        .robot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 10;
+            cursor: pointer;
+            animation: robotBob 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 15px rgba(108, 92, 231, 0.4));
+        }
+
+        @keyframes robotBob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .robot-container:hover { animation-play-state: paused; }
+        .robot-container:hover .speech-bubble { opacity: 1; transform: translateX(-110%) scale(1); }
+
+        .speech-bubble {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            transform: translateX(-110%) scale(0.8);
+            background: var(--card);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 8px 14px;
+            font-size: 13px;
+            color: var(--text);
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 16px;
+            border: 4px solid transparent;
+            border-left-color: var(--primary);
+        }
+
+        /* === Balloons === */
+        .balloon-wrap {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .balloon {
+            animation: balloonFloat var(--dur) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes balloonFloat {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            33% { transform: translateY(-18px) rotate(3deg); }
+            66% { transform: translateY(-8px) rotate(-1deg); }
+        }
+
+        /* === Kawaii Cat === */
+        .cat-container {
+            position: fixed;
+            bottom: 20px;
+            left: 30px;
+            z-index: 10;
+            animation: catPeek 4s ease-in-out infinite;
+            filter: drop-shadow(0 4px 15px rgba(232, 67, 147, 0.3));
+        }
+
+        @keyframes catPeek {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(-3deg); }
+            75% { transform: translateY(-3px) rotate(3deg); }
+        }
+
+        .cat-container:hover .cat-bubble { opacity: 1; transform: translateX(110%) scale(1); }
+
+        .cat-bubble {
+            position: absolute;
+            top: -10px;
+            right: 0;
+            transform: translateX(110%) scale(0.8);
+            background: var(--card);
+            border: 1px solid var(--pink);
+            border-radius: 12px;
+            padding: 8px 14px;
+            font-size: 13px;
+            color: var(--text);
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .cat-bubble::after {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 16px;
+            border: 4px solid transparent;
+            border-right-color: var(--pink);
+        }
+
         .container {
             position: relative;
             z-index: 1;
             max-width: 860px;
             margin: 0 auto;
-            padding: 40px 24px 60px;
+            padding: 70px 24px 60px;
         }
 
         header {
@@ -150,6 +294,8 @@
             margin-bottom: 24px;
             border: 1px solid rgba(255,255,255,0.05);
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
@@ -157,6 +303,15 @@
             border-color: rgba(108, 92, 231, 0.3);
             transform: translateY(-2px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-deco {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            font-size: 2.8em;
+            opacity: 0.1;
+            pointer-events: none;
         }
 
         .card h2 {
@@ -315,6 +470,12 @@
             font-size: 0.85em;
         }
 
+        .footer .footer-chars {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            letter-spacing: 6px;
+        }
+
         .footer a { color: var(--secondary); text-decoration: none; }
 
         .confetti {
@@ -335,12 +496,120 @@
             h1 { font-size: 1.6em; }
             .card { padding: 20px; }
             header { padding: 40px 0 24px; }
+            .robot-container, .cat-container { display: none; }
+            .bunting { height: 40px; }
         }
     </style>
 </head>
 <body>
 
+<!-- Bunting / Party Flags -->
+<div class="bunting">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,8 Q300,2 600,8 Q900,14 1200,8" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none"/>
+        <polygon points="80,8 100,48 120,8" fill="#6c5ce7" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-3,100,8;3,100,8;-3,100,8" dur="4s" repeatCount="indefinite"/></polygon>
+        <polygon points="180,8 200,48 220,8" fill="#e84393" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="2,200,8;-2,200,8;2,200,8" dur="3.5s" repeatCount="indefinite"/></polygon>
+        <polygon points="280,8 300,48 320,8" fill="#00cec9" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-2,300,8;3,300,8;-2,300,8" dur="4.2s" repeatCount="indefinite"/></polygon>
+        <polygon points="380,8 400,48 420,8" fill="#fdcb6e" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="3,400,8;-2,400,8;3,400,8" dur="3.8s" repeatCount="indefinite"/></polygon>
+        <polygon points="480,8 500,48 520,8" fill="#55efc4" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-2,500,8;2,500,8;-2,500,8" dur="4.5s" repeatCount="indefinite"/></polygon>
+        <polygon points="580,8 600,48 620,8" fill="#a29bfe" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="2,600,8;-3,600,8;2,600,8" dur="3.6s" repeatCount="indefinite"/></polygon>
+        <polygon points="680,8 700,48 720,8" fill="#e84393" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-3,700,8;2,700,8;-3,700,8" dur="4.1s" repeatCount="indefinite"/></polygon>
+        <polygon points="780,8 800,48 820,8" fill="#6c5ce7" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="2,800,8;-2,800,8;2,800,8" dur="3.9s" repeatCount="indefinite"/></polygon>
+        <polygon points="880,8 900,48 920,8" fill="#fdcb6e" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-2,900,8;3,900,8;-2,900,8" dur="4.3s" repeatCount="indefinite"/></polygon>
+        <polygon points="980,8 1000,48 1020,8" fill="#00cec9" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="3,1000,8;-3,1000,8;3,1000,8" dur="3.7s" repeatCount="indefinite"/></polygon>
+        <polygon points="1080,8 1100,48 1120,8" fill="#55efc4" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-2,1100,8;2,1100,8;-2,1100,8" dur="4.4s" repeatCount="indefinite"/></polygon>
+    </svg>
+</div>
+
 <div class="stars" id="stars"></div>
+
+<!-- Floating Cartoon Characters -->
+<div class="floating-chars" id="floatingChars"></div>
+
+<!-- Balloons -->
+<div class="balloon-wrap" style="left:5%; top:15%;">
+    <svg class="balloon" style="--dur:5s;--delay:0s" width="40" height="60" viewBox="0 0 40 60">
+        <ellipse cx="20" cy="22" rx="16" ry="20" fill="#e84393" opacity="0.5"/>
+        <ellipse cx="20" cy="22" rx="12" ry="16" fill="#e84393" opacity="0.3"/>
+        <ellipse cx="14" cy="16" rx="4" ry="5" fill="rgba(255,255,255,0.2)"/>
+        <line x1="20" y1="42" x2="20" y2="58" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    </svg>
+</div>
+<div class="balloon-wrap" style="right:8%; top:25%;">
+    <svg class="balloon" style="--dur:6s;--delay:1s" width="40" height="60" viewBox="0 0 40 60">
+        <ellipse cx="20" cy="22" rx="16" ry="20" fill="#6c5ce7" opacity="0.5"/>
+        <ellipse cx="20" cy="22" rx="12" ry="16" fill="#6c5ce7" opacity="0.3"/>
+        <ellipse cx="14" cy="16" rx="4" ry="5" fill="rgba(255,255,255,0.2)"/>
+        <line x1="20" y1="42" x2="20" y2="58" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    </svg>
+</div>
+<div class="balloon-wrap" style="left:12%; top:55%;">
+    <svg class="balloon" style="--dur:5.5s;--delay:2s" width="40" height="60" viewBox="0 0 40 60">
+        <ellipse cx="20" cy="22" rx="16" ry="20" fill="#00cec9" opacity="0.5"/>
+        <ellipse cx="20" cy="22" rx="12" ry="16" fill="#00cec9" opacity="0.3"/>
+        <ellipse cx="14" cy="16" rx="4" ry="5" fill="rgba(255,255,255,0.2)"/>
+        <line x1="20" y1="42" x2="20" y2="58" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    </svg>
+</div>
+<div class="balloon-wrap" style="right:6%; top:65%;">
+    <svg class="balloon" style="--dur:4.8s;--delay:0.5s" width="40" height="60" viewBox="0 0 40 60">
+        <ellipse cx="20" cy="22" rx="16" ry="20" fill="#fdcb6e" opacity="0.5"/>
+        <ellipse cx="20" cy="22" rx="12" ry="16" fill="#fdcb6e" opacity="0.3"/>
+        <ellipse cx="14" cy="16" rx="4" ry="5" fill="rgba(255,255,255,0.2)"/>
+        <line x1="20" y1="42" x2="20" y2="58" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    </svg>
+</div>
+
+<!-- Cute Robot Character -->
+<div class="robot-container" id="robot" title="Click me!">
+    <div class="speech-bubble">Welcome! Have a great day! 🎉</div>
+    <svg width="70" height="85" viewBox="0 0 70 85" xmlns="http://www.w3.org/2000/svg">
+        <line x1="35" y1="0" x2="35" y2="12" stroke="#a29bfe" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="35" cy="3" r="3" fill="#fdcb6e"/>
+        <rect x="12" y="12" width="46" height="38" rx="10" fill="#6c5ce7"/>
+        <rect x="18" y="20" width="14" height="10" rx="4" fill="#0f0f1a"/>
+        <rect x="38" y="20" width="14" height="10" rx="4" fill="#0f0f1a"/>
+        <circle cx="23" cy="25" r="3" fill="#55efc4"><animate attributeName="r" values="3;2;3" dur="2s" repeatCount="indefinite"/></circle>
+        <circle cx="43" cy="25" r="3" fill="#55efc4"><animate attributeName="r" values="3;2;3" dur="2s" repeatCount="indefinite"/></circle>
+        <path d="M 27 38 Q 35 44 43 38" stroke="#fdcb6e" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <rect x="22" y="54" width="26" height="20" rx="6" fill="#a29bfe"/>
+        <rect x="28" y="58" width="4" height="4" rx="1" fill="#fdcb6e"/>
+        <rect x="36" y="58" width="4" height="4" rx="1" fill="#55efc4"/>
+        <rect x="28" y="66" width="4" height="4" rx="1" fill="#e84393"/>
+        <rect x="36" y="66" width="4" height="4" rx="1" fill="#fdcb6e"/>
+        <rect x="4" y="22" width="8" height="18" rx="4" fill="#a29bfe"><animateTransform attributeName="transform" type="rotate" values="-5,8,22;5,8,22;-5,8,22" dur="3s" repeatCount="indefinite"/></rect>
+        <rect x="58" y="22" width="8" height="18" rx="4" fill="#a29bfe"><animateTransform attributeName="transform" type="rotate" values="5,62,22;-5,62,22;5,62,22" dur="3s" repeatCount="indefinite"/></rect>
+        <rect x="22" y="74" width="10" height="10" rx="4" fill="#6c5ce7"/>
+        <rect x="38" y="74" width="10" height="10" rx="4" fill="#6c5ce7"/>
+    </svg>
+</div>
+
+<!-- Cute Cat Character -->
+<div class="cat-container" id="cat" title="Meow!">
+    <div class="cat-bubble">Meow~ 喵~ 🐱</div>
+    <svg width="65" height="70" viewBox="0 0 65 70" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="10,28 5,6 20,22" fill="#e84393"/>
+        <polygon points="55,28 60,6 45,22" fill="#e84393"/>
+        <polygon points="12,26 8,10 20,22" fill="#ff9ff3"/>
+        <polygon points="53,26 57,10 45,22" fill="#ff9ff3"/>
+        <ellipse cx="32" cy="38" rx="24" ry="22" fill="#e84393"/>
+        <ellipse cx="22" cy="34" rx="5" ry="5.5" fill="#0f0f1a"/>
+        <ellipse cx="42" cy="34" rx="5" ry="5.5" fill="#0f0f1a"/>
+        <ellipse cx="23" cy="33" r="2" fill="#fff"><animate attributeName="cx" values="23;21;23" dur="4s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="43" cy="33" r="2" fill="#fff"><animate attributeName="cx" values="43;41;43" dur="4s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="32" cy="40" rx="3" ry="2" fill="#ff9ff3"/>
+        <path d="M 29 42 Q 32 46 35 42" stroke="#0f0f1a" stroke-width="1.5" fill="none"/>
+        <ellipse cx="14" cy="40" rx="5" ry="4" fill="rgba(253,203,110,0.3)"/>
+        <ellipse cx="50" cy="40" rx="5" ry="4" fill="rgba(253,203,110,0.3)"/>
+        <line x1="2" y1="35" x2="14" y2="37" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="2" y1="40" x2="14" y2="40" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="2" y1="45" x2="14" y2="43" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="63" y1="35" x2="51" y2="37" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="63" y1="40" x2="51" y2="40" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="63" y1="45" x2="51" y2="43" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <path d="M 40 56 Q 45 62 50 56 Q 52 64 44 68 Q 36 64 38 56 Z" fill="#e84393"><animateTransform attributeName="transform" type="rotate" values="-5,44,62;5,44,62;-5,44,62" dur="2s" repeatCount="indefinite"/></path>
+    </svg>
+</div>
 
 <div class="container">
     <header>
@@ -361,6 +630,7 @@
     </header>
 
     <div class="card">
+        <div class="card-deco">🧑‍🔬</div>
         <h2><span class="emoji">🚀</span> About Me</h2>
         <p>Currently a <strong>Research Scientist</strong> at <strong>2030 Lab, Yinwang Intelligent Technology Co. Ltd</strong>. Previously at <strong>Huawei Noah's Ark Lab</strong>.</p>
         <p>My passion lies in <strong>Vision-Language Models (VLM)</strong>, <strong>VLA Models</strong>, <strong>World Models</strong>, and <strong>Physical AI</strong> — bridging Autonomous Driving & Robotics with intelligence.</p>
@@ -381,6 +651,7 @@
     </div>
 
     <div class="card hiring-card">
+        <div class="card-deco">🎊</div>
         <h2><span class="emoji">📢</span> Join Us!</h2>
         <p>We are actively looking for self-motivated <strong>Interns</strong> and <strong>Full-time Researchers/Engineers</strong> at <strong>2030 Lab, Yinwang</strong>.</p>
         <ul>
@@ -390,6 +661,7 @@
     </div>
 
     <div class="card">
+        <div class="card-deco">⚡</div>
         <h2><span class="emoji">🛠</span> Experience</h2>
         <div class="timeline-item">
             <h3>Research Scientist @ 2030 Lab, Yinwang (2025 – Present)</h3>
@@ -409,6 +681,7 @@
     </div>
 
     <div class="card">
+        <div class="card-deco">📚</div>
         <h2><span class="emoji">📝</span> Selected Publications</h2>
 
         <h3>Vision-Language-Action & Physical AI</h3>
@@ -439,6 +712,7 @@
     </div>
 
     <div class="footer">
+        <div class="footer-chars">🎈🤖🐱🎉🚀🌟</div>
         <p>Made with ☕ and curiosity · © 2025 Jianhua Han</p>
     </div>
 </div>
@@ -459,6 +733,48 @@
         stars.appendChild(star);
     }
 })();
+
+(function() {
+    var chars = ['🎈','🎁','🌸','⭐','🎀','🍭','🧸','🎶','✨','💫','🪅','🎪'];
+    var container = document.getElementById('floatingChars');
+    for (var i = 0; i < 12; i++) {
+        var el = document.createElement('div');
+        el.className = 'float-char';
+        el.textContent = chars[i % chars.length];
+        el.style.left = (5 + Math.random() * 90) + '%';
+        el.style.top = (5 + Math.random() * 85) + '%';
+        el.style.setProperty('--dur', (4 + Math.random() * 4) + 's');
+        el.style.setProperty('--delay', (Math.random() * 5) + 's');
+        el.style.fontSize = (1.2 + Math.random() * 1.2) + 'em';
+        container.appendChild(el);
+    }
+})();
+
+var robotMessages = ['Welcome! 🎉', 'Nice to meet you!', 'Have a great day! ☀️', 'Beep boop! 🤖', "Let's build AI! 🚀", '你好呀！👋'];
+var robot = document.getElementById('robot');
+robot.addEventListener('click', function() {
+    var bubble = robot.querySelector('.speech-bubble');
+    bubble.textContent = robotMessages[Math.floor(Math.random() * robotMessages.length)];
+    bubble.style.opacity = '1';
+    bubble.style.transform = 'translateX(-110%) scale(1)';
+    setTimeout(function() {
+        bubble.style.opacity = '0';
+        bubble.style.transform = 'translateX(-110%) scale(0.8)';
+    }, 2000);
+});
+
+var catMessages = ['Meow~ 喵~ 🐱', 'Purrrr~ 呼噜噜', '摸摸我！🐾', 'Nya~ ❤️', '🐟 想吃鱼！', 'Zzz... 💤'];
+var cat = document.getElementById('cat');
+cat.addEventListener('click', function() {
+    var bubble = cat.querySelector('.cat-bubble');
+    bubble.textContent = catMessages[Math.floor(Math.random() * catMessages.length)];
+    bubble.style.opacity = '1';
+    bubble.style.transform = 'translateX(110%) scale(1)';
+    setTimeout(function() {
+        bubble.style.opacity = '0';
+        bubble.style.transform = 'translateX(110%) scale(0.8)';
+    }, 2000);
+});
 
 document.addEventListener('click', function(e) {
     var colors = ['#6c5ce7', '#00cec9', '#fdcb6e', '#e84393', '#55efc4', '#a29bfe'];
