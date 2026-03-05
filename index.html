@@ -5,163 +5,480 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jianhua Han - Profile</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
-            background-color: #f9f9f9;
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #00cec9;
+            --accent: #fdcb6e;
+            --pink: #e84393;
+            --bg: #0f0f1a;
+            --card: #1a1a2e;
+            --card-hover: #222240;
+            --text: #e2e2e2;
+            --text-muted: #a0a0b8;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: #fff;
+            animation: twinkle var(--duration) ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.1; transform: scale(0.8); }
+            100% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 24px 60px;
+        }
+
         header {
             text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eaecef;
-            margin-bottom: 30px;
+            padding: 60px 0 40px;
+            position: relative;
         }
-        h1 { margin-bottom: 10px; color: #24292e; }
-        h2 { border-bottom: 1px solid #eaecef; padding-bottom: 10px; margin-top: 40px; color: #24292e; }
-        h3 { margin-top: 20px; margin-bottom: 5px; color: #444; }
-        a { color: #0366d6; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .badges { margin: 15px 0; }
-        .badges img { margin: 0 5px; height: 28px; }
-        .hiring-box {
-            background-color: #f1f8ff;
-            border: 1px solid #c8e1ff;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 20px;
+
+        .avatar-ring {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--pink), var(--accent));
+            padding: 4px;
+            margin: 0 auto 24px;
+            animation: spin 8s linear infinite;
         }
-        .intro-quote {
-            font-style: italic;
-            color: #586069;
-            text-align: center;
+
+        .avatar-ring .inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 2.2em;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.05em;
             margin-bottom: 20px;
         }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-        .footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #eaecef;
-            text-align: center;
-            font-size: 0.85em;
-            color: #586069;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
+
+        .quote {
+            font-style: italic;
+            color: var(--accent);
+            font-size: 0.95em;
+            padding: 12px 20px;
+            border-left: 3px solid var(--accent);
+            background: rgba(253, 203, 110, 0.05);
+            border-radius: 0 8px 8px 0;
+            display: inline-block;
+            margin-top: 8px;
         }
-        /* 针对新文章的强调样式 */
-        .new-paper {
-            background-color: #fffbdd; /* 淡淡的黄色背景 */
-            padding: 2px 5px;
+
+        .badges {
+            margin: 24px 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--card);
+            color: var(--text);
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
+            border-color: var(--primary);
+        }
+
+        .badge .icon { font-size: 1.1em; }
+
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            background: var(--card-hover);
+            border-color: rgba(108, 92, 231, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+
+        .card h2 {
+            font-size: 1.4em;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 .emoji {
+            font-size: 1.3em;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            font-size: 1.05em;
+            margin: 18px 0 8px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .card ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 4px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .card ul li strong {
+            color: var(--text);
+        }
+
+        .card a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .hiring-card {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(0, 206, 201, 0.1));
+            border-color: rgba(108, 92, 231, 0.3);
+        }
+
+        .hiring-card:hover {
+            border-color: var(--primary);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .info-item {
+            background: rgba(255,255,255,0.03);
+            padding: 14px 16px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95em;
+        }
+
+        .info-item .icon { font-size: 1.2em; }
+        .info-item .label { color: var(--text-muted); }
+        .info-item .value { color: var(--text); font-weight: 500; }
+
+        .paper-tag {
+            display: inline-block;
+            font-size: 0.75em;
+            padding: 2px 8px;
             border-radius: 4px;
+            font-weight: 600;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .tag-new {
+            background: rgba(253, 203, 110, 0.2);
+            color: var(--accent);
+        }
+
+        .tag-venue {
+            background: rgba(108, 92, 231, 0.2);
+            color: #a29bfe;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 20px;
+            border-left: 2px solid rgba(108, 92, 231, 0.3);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .timeline-item h3 { margin-top: 0; }
+
+        .wave {
+            display: inline-block;
+            animation: wave 2.5s ease-in-out infinite;
+            transform-origin: 70% 70%;
+        }
+
+        @keyframes wave {
+            0%, 60%, 100% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.85em;
+        }
+
+        .footer a { color: var(--secondary); text-decoration: none; }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6em; }
+            .card { padding: 20px; }
+            header { padding: 40px 0 24px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Hi there, I'm Jianhua Han (韩建华) 👋</h1>
-    <div class="badges">
-        <a href="https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en">
-            <img src="https://img.shields.io/badge/Google%20Scholar-Jianhua%20Han-4285F4?style=for-the-badge&logo=google-scholar&logoColor=white" alt="Google Scholar">
-        </a>
-        <a href="mailto:hanjianhua2012@gmail.com">
-            <img src="https://img.shields.io/badge/Email-hanjianhua2012%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
-        </a>
+<div class="stars" id="stars"></div>
+
+<div class="container">
+    <header>
+        <div class="avatar-ring">
+            <div class="inner"><span class="wave">👋</span></div>
+        </div>
+        <h1>Hi, I'm Jianhua Han (韩建华)</h1>
+        <p class="subtitle">Research Scientist · Building the Future of Physical AI</p>
+        <div class="quote">"Intelligence can be defined as self-motivated skill-acquisition efficiency."</div>
+        <div class="badges">
+            <a class="badge" href="https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en" target="_blank">
+                <span class="icon">🎓</span> Google Scholar
+            </a>
+            <a class="badge" href="mailto:hanjianhua2012@gmail.com">
+                <span class="icon">✉️</span> hanjianhua2012@gmail.com
+            </a>
+        </div>
+    </header>
+
+    <div class="card">
+        <h2><span class="emoji">🚀</span> About Me</h2>
+        <p>Currently a <strong>Research Scientist</strong> at <strong>2030 Lab, Yinwang Intelligent Technology Co. Ltd</strong>. Previously at <strong>Huawei Noah's Ark Lab</strong>.</p>
+        <p>My passion lies in <strong>Vision-Language Models (VLM)</strong>, <strong>VLA Models</strong>, <strong>World Models</strong>, and <strong>Physical AI</strong> — bridging Autonomous Driving & Robotics with intelligence.</p>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="icon">📍</span>
+                <div><div class="label">Location</div><div class="value">Shanghai, China</div></div>
+            </div>
+            <div class="info-item">
+                <span class="icon">🎓</span>
+                <div><div class="label">Education</div><div class="value">M.S. & B.S. @ SJTU</div></div>
+            </div>
+            <div class="info-item">
+                <span class="icon">🔬</span>
+                <div><div class="label">Focus</div><div class="value">VLM · VLA · Physical AI</div></div>
+            </div>
+        </div>
     </div>
-    <div class="intro-quote">
-        "Intelligence can be defined as self-motivated skill-acquisition efficiency."
+
+    <div class="card hiring-card">
+        <h2><span class="emoji">📢</span> Join Us!</h2>
+        <p>We are actively looking for self-motivated <strong>Interns</strong> and <strong>Full-time Researchers/Engineers</strong> at <strong>2030 Lab, Yinwang</strong>.</p>
+        <ul>
+            <li><strong>Focus Areas:</strong> VLM, Physical AI, VLA, World Models, End-to-End Autonomous Driving, and General-purpose Agents.</li>
+            <li>Interested in building the next generation of intelligent systems? Reach out at <a href="mailto:hanjianhua2012@gmail.com">hanjianhua2012@gmail.com</a> 🎉</li>
+        </ul>
     </div>
-</header>
 
-<section>
-    <h2>🚀 About Me</h2>
-    <p>I am currently a <strong>Research Scientist</strong> at <strong>2030 Lab, Yinwang Intelligent Technology Co. Ltd</strong>. Previously, I worked as a Research Scientist at <strong>Huawei Noah's Ark Lab</strong>.</p>
-    <p>My research interests lie in <strong>Vision-Language Models (VLM)</strong>, <strong>Vision-Language-Action (VLA) Models</strong>, <strong>World Models</strong>, and <strong>Physical AI</strong> (integrating Autonomous Driving & Robotics).</p>
-    <ul>
-        <li>📍 <strong>Location:</strong> Shanghai, China</li>
-        <li>🎓 <strong>Education:</strong> M.S. (IEEE Class) & B.S. from <strong>Shanghai Jiao Tong University (SJTU)</strong>.</li>
-        <li>📫 <strong>Contact:</strong> <a href="mailto:hanjianhua2012@gmail.com">hanjianhua2012@gmail.com</a></li>
-    </ul>
-</section>
-
-<section class="hiring-box">
-    <h3>📢 Hiring & Collaboration</h3>
-    <p>We are actively looking for self-motivated <strong>Interns</strong> and <strong>Full-time Researchers/Engineers</strong> to join our team at <strong>2030 Lab, Yinwang</strong>.</p>
-    <ul>
-        <li><strong>Focus Areas:</strong> VLM, Physical AI, VLA, World Models, End-to-End Autonomous Driving, and General-purpose Agents.</li>
-        <li>If you are interested in building the next generation of intelligent systems, please email me at <a href="mailto:hanjianhua2012@gmail.com">hanjianhua2012@gmail.com</a>.</li>
-    </ul>
-</section>
-
-<section>
-    <h2>🛠 Experience</h2>
-    
-    <h3>Research Scientist @ 2030 Lab, Yinwang Intelligent Technology (2025 – Present)</h3>
-    <ul>
-        <li>Constructing research on <strong>Vision-Language Models (VLM)</strong>, <strong>Vision-Language-Action (VLA)</strong> models and <strong>World Models</strong> for <strong>Physical AI</strong>.</li>
-        <li>Focusing on visual understanding, reasoning capabilities, and decision-making in complex open-world environments (AD & Robotics).</li>
-    </ul>
-
-    <h3>Research Scientist @ Huawei Noah's Ark Lab (2019 – 2025)</h3>
-    <ul>
-        <li><strong>Foundation Models:</strong> Led the development of <strong>Large-scale Multi-modal Foundation Models</strong> (30B+ parameters).
+    <div class="card">
+        <h2><span class="emoji">🛠</span> Experience</h2>
+        <div class="timeline-item">
+            <h3>Research Scientist @ 2030 Lab, Yinwang (2025 – Present)</h3>
             <ul>
-                <li>Deeply involved in model architecture design, pre-training strategies, and data optimization.</li>
-                <li>The models achieved superior performance on benchmarks like MME, DocVQA, and MathVista.</li>
+                <li>Constructing research on <strong>VLM</strong>, <strong>VLA</strong> models and <strong>World Models</strong> for <strong>Physical AI</strong>.</li>
+                <li>Focusing on visual understanding, reasoning, and decision-making in complex open-world environments (AD & Robotics).</li>
             </ul>
-        </li>
-        <li><strong>Open-Vocabulary Perception:</strong> Developed the <strong>DetCLIP</strong> series, achieving <strong>No.1</strong> results on COCO, Waymo 2D, and LVIS leaderboards.</li>
-    </ul>
-</section>
+        </div>
+        <div class="timeline-item">
+            <h3>Research Scientist @ Huawei Noah's Ark Lab (2019 – 2025)</h3>
+            <ul>
+                <li><strong>Foundation Models:</strong> Led the development of <strong>Large-scale Multi-modal Foundation Models</strong> (30B+ parameters).</li>
+                <li>Model architecture design, pre-training strategies, and data optimization — achieving superior results on MME, DocVQA, and MathVista.</li>
+                <li><strong>Open-Vocabulary Perception:</strong> Developed the <strong>DetCLIP</strong> series, achieving <strong>No.1</strong> on COCO, Waymo 2D, and LVIS leaderboards.</li>
+            </ul>
+        </div>
+    </div>
 
-<section>
-    <h2>📝 Selected Publications</h2>
+    <div class="card">
+        <h2><span class="emoji">📝</span> Selected Publications</h2>
 
-    <h3>1. Vision-Language-Action (VLA) & Embodied AI (Physical AI)</h3>
-    <p><em>Focus: Integrating reasoning with action for Robotics and Autonomous Driving.</em></p>
-    <ul>
-        <li class="new-paper"><strong>[New] Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving.</strong><br>
-            <em>Focus: Integrating perception features into World Models to enhance robustness.</em></li>
-        <li><strong>Reason2drive: Towards interpretable and chain-based reasoning for autonomous driving.</strong> (ECCV)<br>
-            M Nie, R Peng, C Wang, X Cai, <strong>J Han</strong>, H Xu, L Zhang</li>
-        <li><strong>Navcot: Boosting LLM-based vision-and-language navigation via learning disentangled reasoning.</strong> (TPAMI)<br>
-            B Lin, Y Nie, Z Wei, J Chen, S Ma, <strong>J Han</strong>, H Xu, X Chang, X Liang</li>
-        <li><strong>SeePhys: Does Seeing Help Thinking? – Benchmarking Vision-Based Physics Reasoning.</strong> (NeurIPS)</li>
-        <li><strong>HiLM-D: Towards High-Resolution Understanding in Multimodal Large Language Models for Autonomous Driving.</strong> (IJCV)<br>
-            X Ding, <strong>J Han</strong>, H Xu, W Zhang, X Li</li>
-    </ul>
+        <h3>Vision-Language-Action & Physical AI</h3>
+        <ul>
+            <li><strong>Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving.</strong> <span class="paper-tag tag-new">NEW</span></li>
+            <li><strong>Reason2drive: Towards interpretable and chain-based reasoning for autonomous driving.</strong> <span class="paper-tag tag-venue">ECCV</span><br>M Nie, R Peng, C Wang, X Cai, <strong>J Han</strong>, H Xu, L Zhang</li>
+            <li><strong>Navcot: Boosting LLM-based vision-and-language navigation via learning disentangled reasoning.</strong> <span class="paper-tag tag-venue">TPAMI</span><br>B Lin, Y Nie, Z Wei, J Chen, S Ma, <strong>J Han</strong>, H Xu, X Chang, X Liang</li>
+            <li><strong>SeePhys: Does Seeing Help Thinking? – Benchmarking Vision-Based Physics Reasoning.</strong> <span class="paper-tag tag-venue">NeurIPS</span></li>
+            <li><strong>HiLM-D: Towards High-Resolution Understanding in Multimodal Large Language Models for Autonomous Driving.</strong> <span class="paper-tag tag-venue">IJCV</span><br>X Ding, <strong>J Han</strong>, H Xu, W Zhang, X Li</li>
+        </ul>
 
-    <h3>2. Multimodal Foundation Models (Generation & Reasoning)</h3>
-    <ul>
-        <li><strong>ILLUME: Illuminating Your LLMs to See, Draw, and Self-Enhance.</strong> (ICCV)<br>
-            C Wang, G Lu, J Yang, R Huang, <strong>J Han</strong>, L Hou, W Zhang, H Xu</li>
-        <li><strong>ILLUME+: Illuminating Unified MLLM with Dual Visual Tokenization and Diffusion Refinement.</strong> (In Submission)</li>
-        <li><strong>SemHiTok: A Unified Image Tokenizer via Semantic-Guided Hierarchical Codebook.</strong> (In Submission)</li>
-        <li><strong>Emova: Empowering language models to see, hear and speak with vivid emotions.</strong> (CVPR)</li>
-        <li><strong>Gaining Wisdom from Setbacks: Aligning Large Language Models via Mistake Analysis.</strong> (ICLR)</li>
-    </ul>
+        <h3>Multimodal Foundation Models</h3>
+        <ul>
+            <li><strong>ILLUME: Illuminating Your LLMs to See, Draw, and Self-Enhance.</strong> <span class="paper-tag tag-venue">ICCV</span><br>C Wang, G Lu, J Yang, R Huang, <strong>J Han</strong>, L Hou, W Zhang, H Xu</li>
+            <li><strong>ILLUME+: Illuminating Unified MLLM with Dual Visual Tokenization and Diffusion Refinement.</strong></li>
+            <li><strong>SemHiTok: A Unified Image Tokenizer via Semantic-Guided Hierarchical Codebook.</strong></li>
+            <li><strong>Emova: Empowering language models to see, hear and speak with vivid emotions.</strong> <span class="paper-tag tag-venue">CVPR</span></li>
+            <li><strong>Gaining Wisdom from Setbacks: Aligning Large Language Models via Mistake Analysis.</strong> <span class="paper-tag tag-venue">ICLR</span></li>
+        </ul>
 
-    <h3>3. Open-Vocabulary Perception (DetCLIP Series)</h3>
-    <ul>
-        <li><strong>DetCLIP: Dictionary-enriched visual-concept paralleled pre-training for open-world detection.</strong> (NeurIPS)<br>
-            L Yao*, <strong>J Han*</strong>, Y Wen, et al.</li>
-        <li><strong>DetCLIPv2: Scalable Open-Vocabulary Object Detection Pre-training via Word-Region Alignment.</strong> (CVPR)</li>
-        <li><strong>DetCLIPv3: Towards Versatile Generative Open-vocabulary Object Detection.</strong> (CVPR)</li>
-        <li><strong>DetGPT: Detect what you need via reasoning.</strong> (EMNLP)</li>
-    </ul>
-</section>
+        <h3>Open-Vocabulary Perception (DetCLIP Series)</h3>
+        <ul>
+            <li><strong>DetCLIP: Dictionary-enriched visual-concept paralleled pre-training for open-world detection.</strong> <span class="paper-tag tag-venue">NeurIPS</span><br>L Yao*, <strong>J Han*</strong>, Y Wen, et al.</li>
+            <li><strong>DetCLIPv2: Scalable Open-Vocabulary Object Detection Pre-training via Word-Region Alignment.</strong> <span class="paper-tag tag-venue">CVPR</span></li>
+            <li><strong>DetCLIPv3: Towards Versatile Generative Open-vocabulary Object Detection.</strong> <span class="paper-tag tag-venue">CVPR</span></li>
+            <li><strong>DetGPT: Detect what you need via reasoning.</strong> <span class="paper-tag tag-venue">EMNLP</span></li>
+        </ul>
+    </div>
 
-<div class="footer">
-    <a href="https://info.flagcounter.com/MYCODE"><img src="https://s11.flagcounter.com/count2/MYCODE/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
-    
-    <p style="margin-top: 10px;">© 2024 Jianhua Han. Hosted on GitHub Pages.</p>
+    <div class="footer">
+        <p>Made with ☕ and curiosity · © 2025 Jianhua Han</p>
+    </div>
 </div>
+
+<script>
+(function() {
+    var stars = document.getElementById('stars');
+    for (var i = 0; i < 80; i++) {
+        var star = document.createElement('div');
+        star.className = 'star';
+        var size = Math.random() * 3 + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+        star.style.animationDelay = Math.random() * 5 + 's';
+        stars.appendChild(star);
+    }
+})();
+
+document.addEventListener('click', function(e) {
+    var colors = ['#6c5ce7', '#00cec9', '#fdcb6e', '#e84393', '#55efc4', '#a29bfe'];
+    for (var i = 0; i < 8; i++) {
+        var confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = e.clientX + (Math.random() - 0.5) * 60 + 'px';
+        confetti.style.top = e.clientY + 'px';
+        confetti.style.width = Math.random() * 8 + 4 + 'px';
+        confetti.style.height = Math.random() * 8 + 4 + 'px';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        confetti.style.animationDuration = Math.random() * 1.5 + 1 + 's';
+        document.body.appendChild(confetti);
+        (function(el) {
+            setTimeout(function() { el.remove(); }, 2500);
+        })(confetti);
+    }
+});
+</script>
 
 </body>
 </html>
