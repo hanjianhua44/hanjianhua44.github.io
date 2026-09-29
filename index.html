@@ -31,7 +31,7 @@
     </script>
     <style>
         :root {
-            --paper: #fbfbfa;
+            --paper: #ffffff;
             --surface: #ffffff;
             --ink: #152238;
             --ink-soft: #536071;
@@ -214,7 +214,14 @@
             color: #445064;
             font-family: var(--serif);
             font-size: 0.98rem;
-            font-style: italic;
+        }
+
+        .thesis strong {
+            color: var(--accent);
+            font-family: var(--sans);
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .profile-links {
@@ -406,7 +413,7 @@
 
         .filter-button {
             appearance: none;
-            min-height: 34px;
+            min-height: 40px;
             padding: 5px 10px;
             border: 1px solid var(--line-dark);
             border-radius: 3px;
@@ -900,7 +907,7 @@
                 <h1>Jianhua Han</h1>
                 <p class="hero-role">2030 Lab, Yinwang Intelligent Technology Co., Ltd.</p>
                 <p class="hero-lead">I study how multimodal foundation models can move beyond recognition toward grounded reasoning and reliable action, with a focus on vision-language-action models, robotics, and open-world perception.</p>
-                <blockquote class="thesis">“Intelligence can be defined as self-motivated skill-acquisition efficiency in the real world.”</blockquote>
+                <p class="thesis"><strong>Research statement.</strong> Intelligence can be defined as self-motivated skill-acquisition efficiency in the real world.</p>
                 <div class="profile-links" aria-label="Profile links">
                     <a class="profile-link" href="https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
                     <a class="profile-link" href="https://github.com/hanjianhua44" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
@@ -967,7 +974,7 @@
                 <div class="section-kicker">Selected work</div>
                 <div class="section-title">
                     <div class="publication-heading-row">
-                        <h2 id="publications-title">Publications</h2>
+                        <h2 id="publications-title" tabindex="-1">Publications</h2>
                         <a class="scholar-link" href="https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Complete list on Google Scholar ↗</a>
                     </div>
                     <p>A curated path through my research. Each entry summarizes both the technical contribution and the broader idea it advances.</p>
@@ -1128,7 +1135,7 @@
             </div>
             <div class="experience-list">
                 <article class="experience">
-                    <div class="experience-period">2025 — Present</div>
+                    <div class="experience-period"><time datetime="2025">2025</time> — Present</div>
                     <div>
                         <h3>Research Scientist</h3>
                         <div class="experience-org">2030 Lab · Yinwang Intelligent Technology Co., Ltd.</div>
@@ -1136,7 +1143,7 @@
                     </div>
                 </article>
                 <article class="experience">
-                    <div class="experience-period">2019 — 2025</div>
+                    <div class="experience-period"><time datetime="2019">2019</time> — <time datetime="2025">2025</time></div>
                     <div>
                         <h3>Research Scientist</h3>
                         <div class="experience-org">Huawei Noah's Ark Lab</div>
@@ -1184,7 +1191,7 @@
 
     <footer class="site-footer">
         <a class="visitor-counter" href="https://info.flagcounter.com/R4Aj" target="_blank" rel="noopener noreferrer" aria-label="View aggregate visitor statistics">
-            <img src="https://s01.flagcounter.com/count2/R4Aj/bg_FFFFFF/txt_536071/border_DFE3E8/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Visitor count and countries" loading="lazy">
+            <img src="https://s01.flagcounter.com/count2/R4Aj/bg_FFFFFF/txt_536071/border_DFE3E8/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Visitor count and countries" width="112" height="46" loading="lazy" referrerpolicy="no-referrer">
         </a>
         <p class="footer-note">© 2026 Jianhua Han · Researching intelligence in the real world.</p>
     </footer>
@@ -1221,6 +1228,9 @@
         Array.prototype.slice.call(document.querySelectorAll('[data-filter-link]')).forEach(function(link) {
             link.addEventListener('click', function() {
                 applyFilter(link.dataset.filterLink);
+                window.setTimeout(function() {
+                    document.getElementById('publications-title').focus();
+                }, 0);
             });
         });
     })();
