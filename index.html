@@ -376,6 +376,68 @@
             text-decoration: underline;
         }
 
+        .project-highlight {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 18px;
+            margin-top: 14px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.14), rgba(0, 206, 201, 0.08));
+            border: 1px solid rgba(108, 92, 231, 0.28);
+        }
+
+        .project-highlight .project-icon {
+            font-size: 2em;
+            line-height: 1;
+        }
+
+        .project-highlight h3 {
+            margin: 0 0 4px;
+        }
+
+        .project-highlight p {
+            margin: 0 0 10px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(0, 206, 201, 0.12);
+            border: 1px solid rgba(0, 206, 201, 0.25);
+            font-size: 0.88em;
+            font-weight: 600;
+        }
+
+        .visitor-stats {
+            text-align: center;
+        }
+
+        .visitor-counter {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 12px;
+            border-radius: 12px;
+            background: #1a1a2e;
+            border: 1px solid rgba(108, 92, 231, 0.35);
+            min-height: 80px;
+        }
+
+        .visitor-counter img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .visitor-note {
+            margin-top: 10px;
+            font-size: 0.82em;
+            color: var(--text-muted);
+        }
+
         .hiring-card {
             background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(0, 206, 201, 0.1));
             border-color: rgba(108, 92, 231, 0.3);
@@ -626,6 +688,9 @@
             <a class="badge" href="https://github.com/hanjianhua44" target="_blank">
                 <span class="icon">🐙</span> GitHub
             </a>
+            <a class="badge" href="https://github.com/hanjianhua44/Awesome-VLA-Papers" target="_blank">
+                <span class="icon">📚</span> Awesome VLA Papers
+            </a>
             <a class="badge" href="mailto:hanjianhua2012@gmail.com">
                 <span class="icon">✉️</span> hanjianhua2012@gmail.com
             </a>
@@ -636,7 +701,7 @@
         <div class="card-deco">🧑‍🔬</div>
         <h2><span class="emoji">🚀</span> About Me</h2>
         <p>Currently a <strong>Research Scientist</strong> at <strong>2030 Lab, Yinwang Intelligent Technology Co. Ltd</strong>. Previously at <strong>Huawei Noah's Ark Lab</strong>.</p>
-        <p>My passion lies in <strong>Vision-Language Models (VLM)</strong>, <strong>VLA Models</strong>, <strong>World Models</strong>, and <strong>Physical AI</strong> — bridging Autonomous Driving & Robotics with intelligence.</p>
+        <p>My research spans <strong>Multimodal Foundation Models</strong>, <strong>Open-World Perception</strong>, <strong>Autonomous Driving</strong>, <strong>VLA Models</strong>, and <strong>World Models</strong> — turning visual understanding and reasoning into reliable physical-world decisions.</p>
         <div class="info-grid">
             <div class="info-item">
                 <span class="icon">📍</span>
@@ -648,7 +713,21 @@
             </div>
             <div class="info-item">
                 <span class="icon">🔬</span>
-                <div><div class="label">Focus</div><div class="value">VLM · VLA · Physical AI</div></div>
+                <div><div class="label">Focus</div><div class="value">VLM · VLA · World Models</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-deco">🗺️</div>
+        <h2><span class="emoji">🌟</span> Research & Open Source</h2>
+        <p>Alongside research, I maintain practical resources that help the community navigate fast-moving Physical AI literature.</p>
+        <div class="project-highlight">
+            <div class="project-icon">🤖</div>
+            <div>
+                <h3>Awesome VLA Papers</h3>
+                <p>A curated, continuously updated map of Vision-Language-Action research across autonomous driving, robotics, world models, and self-improving embodied agents.</p>
+                <a class="project-link" href="https://github.com/hanjianhua44/Awesome-VLA-Papers" target="_blank" rel="noopener noreferrer">Explore the paper map →</a>
             </div>
         </div>
     </div>
@@ -689,7 +768,9 @@
 
         <h3>Vision-Language-Action & Physical AI</h3>
         <ul>
-            <li><strong>Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving.</strong> <span class="paper-tag tag-new">NEW</span></li>
+            <li><strong>4D-WAM: 4D Consistent World Modeling for Autonomous Driving.</strong> <span class="paper-tag tag-new">NEW · 2026</span></li>
+            <li><strong>SUV: Future Scene Understanding as Video Generation for End-to-End Driving.</strong> <span class="paper-tag tag-new">NEW · 2026</span></li>
+            <li><strong>WAM-Diff2: Hierarchical AR-to-Diffusion Distillation for Highly Efficient Autonomous Driving VLA.</strong> <span class="paper-tag tag-new">NEW · 2026</span></li>
             <li><strong>Reason2drive: Towards interpretable and chain-based reasoning for autonomous driving.</strong> <span class="paper-tag tag-venue">ECCV</span><br>M Nie, R Peng, C Wang, X Cai, <strong>J Han</strong>, H Xu, L Zhang</li>
             <li><strong>Navcot: Boosting LLM-based vision-and-language navigation via learning disentangled reasoning.</strong> <span class="paper-tag tag-venue">TPAMI</span><br>B Lin, Y Nie, Z Wei, J Chen, S Ma, <strong>J Han</strong>, H Xu, X Chang, X Liang</li>
             <li><strong>SeePhys: Does Seeing Help Thinking? – Benchmarking Vision-Based Physics Reasoning.</strong> <span class="paper-tag tag-venue">NeurIPS</span></li>
@@ -714,9 +795,19 @@
         </ul>
     </div>
 
+    <div class="card visitor-stats">
+        <div class="card-deco">🌍</div>
+        <h2><span class="emoji">🌏</span> Visitors Around the World</h2>
+        <p>Thanks for stopping by! This counter shows page views and where visitors come from.</p>
+        <a class="visitor-counter" href="https://info.flagcounter.com/R4Aj" target="_blank" rel="noopener noreferrer" aria-label="View detailed visitor statistics">
+            <img src="https://s01.flagcounter.com/count2/R4Aj/bg_1A1A2E/txt_E2E2E2/border_6C5CE7/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Visitor count and countries" loading="lazy">
+        </a>
+        <div class="visitor-note">Country-level aggregate statistics · no cookies set by this page</div>
+    </div>
+
     <div class="footer">
         <div class="footer-chars">🎈🤖🐱🎉🚀🌟</div>
-        <p>Made with ☕ and curiosity · © 2025 Jianhua Han</p>
+        <p>Made with ☕ and curiosity · © 2026 Jianhua Han</p>
     </div>
 </div>
 
