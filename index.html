@@ -928,6 +928,21 @@
             line-height: 1.6;
         }
 
+        .topic-jump {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 14px;
+            color: var(--primary);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .topic-jump:hover {
+            color: var(--accent);
+            text-decoration: none !important;
+        }
+
         .topic-item::after {
             content: "";
             position: absolute;
@@ -958,6 +973,179 @@
             color: var(--primary);
             background: rgba(0, 240, 255, 0.1);
             border: 1px solid rgba(0, 240, 255, 0.18);
+        }
+
+        .publication-intro {
+            max-width: 760px;
+            margin-bottom: 20px !important;
+        }
+
+        .publication-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 20px;
+            padding: 12px 0;
+            border-top: 1px solid rgba(0, 240, 255, 0.12);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.12);
+        }
+
+        .publication-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .publication-filter {
+            appearance: none;
+            padding: 7px 10px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            background: rgba(0, 240, 255, 0.025);
+            color: var(--text-muted);
+            font: inherit;
+            font-size: 0.68rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .publication-filter:hover,
+        .publication-filter[aria-pressed="true"] {
+            border-color: var(--primary);
+            background: rgba(0, 240, 255, 0.13);
+            color: var(--text);
+            box-shadow: 0 0 16px rgba(0, 240, 255, 0.08);
+        }
+
+        .publication-count {
+            flex: 0 0 auto;
+            color: var(--secondary);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .publication-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .publication-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 285px;
+            padding: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            background:
+                linear-gradient(145deg, rgba(0, 240, 255, 0.05), transparent 42%),
+                rgba(4, 11, 20, 0.7);
+            clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 13px, 100% 100%, 0 100%);
+            transition: transform 0.24s ease, border-color 0.24s ease, opacity 0.24s ease;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 240, 255, 0.5);
+        }
+
+        .publication-card[hidden] {
+            display: none;
+        }
+
+        .publication-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 13px;
+            height: 13px;
+            background: var(--primary);
+            opacity: 0.45;
+        }
+
+        .paper-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .paper-index {
+            color: var(--pink);
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+        }
+
+        .paper-venue {
+            color: var(--text-muted);
+            font-size: 0.67rem;
+            letter-spacing: 0.08em;
+            text-align: right;
+            text-transform: uppercase;
+        }
+
+        .paper-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 12px;
+        }
+
+        .paper-topic {
+            padding: 3px 6px;
+            border: 1px solid rgba(124, 255, 107, 0.18);
+            color: var(--secondary);
+            font-size: 0.58rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .publication-card h3 {
+            margin: 0 0 12px;
+            font-size: 1rem;
+            line-height: 1.45;
+            letter-spacing: 0;
+        }
+
+        .publication-card h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .publication-card h3 a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .paper-analysis {
+            margin: 0 0 16px !important;
+            font-size: 0.82rem;
+            line-height: 1.65;
+        }
+
+        .paper-insight {
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text);
+            font-size: 0.72rem;
+            line-height: 1.55;
+        }
+
+        .paper-insight strong {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--accent);
+            font-size: 0.58rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
         }
 
         .timeline-item {
@@ -1031,6 +1219,9 @@
             .project-highlight { flex-direction: column; }
             .topic-grid { grid-template-columns: 1fr; }
             .topic-item { min-height: 0; }
+            .publication-controls { align-items: flex-start; flex-direction: column; }
+            .publication-grid { grid-template-columns: 1fr; }
+            .publication-card { min-height: 0; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1226,31 +1417,37 @@
                 <span class="topic-id">TOPIC_01</span>
                 <h3>Multimodal Foundation Models</h3>
                 <p>Unified models that understand, reason, and generate across visual, linguistic, and embodied signals.</p>
+                <a class="topic-jump" href="#selected-publications" data-filter-link="foundation">View related papers →</a>
             </article>
             <article class="topic-item">
                 <span class="topic-id">TOPIC_02</span>
                 <h3>Vision-Language-Action</h3>
                 <p>Connecting perception and language with precise, generalizable actions in real-world environments.</p>
+                <a class="topic-jump" href="#selected-publications" data-filter-link="vla">View related papers →</a>
             </article>
             <article class="topic-item">
                 <span class="topic-id">TOPIC_03</span>
                 <h3>World Models</h3>
                 <p>Learning predictive representations of physical dynamics for planning, simulation, and decision-making.</p>
+                <a class="topic-jump" href="#selected-publications" data-filter-link="world">View related papers →</a>
             </article>
             <article class="topic-item">
                 <span class="topic-id">TOPIC_04</span>
                 <h3>Robotics</h3>
                 <p>Building adaptable embodied agents that acquire skills and improve through interaction and experience.</p>
+                <a class="topic-jump" href="#selected-publications" data-filter-link="robotics">View related papers →</a>
             </article>
             <article class="topic-item">
                 <span class="topic-id">TOPIC_05</span>
                 <h3>Autonomous Driving</h3>
                 <p>End-to-end systems for open-world scene understanding, forecasting, reasoning, and safe control.</p>
+                <a class="topic-jump" href="#selected-publications" data-filter-link="driving">View related papers →</a>
             </article>
             <article class="topic-item">
                 <span class="topic-id">TOPIC_06</span>
                 <h3>Open-World Perception</h3>
                 <p>Scalable visual recognition beyond fixed vocabularies, distributions, and predefined scenarios.</p>
+                <a class="topic-jump" href="#selected-publications" data-filter-link="perception">View related papers →</a>
             </article>
         </div>
     </div>
@@ -1299,37 +1496,129 @@
         </div>
     </div>
 
-    <div class="card">
+    <div class="card" id="selected-publications">
         <div class="card-deco">📚</div>
         <h2><span class="emoji">📝</span> Selected Publications</h2>
+        <p class="publication-intro">A topic-aligned view of my work, from open-world visual grounding to models that predict, reason, and act. Each selection highlights the technical idea and the broader research signal behind it.</p>
 
-        <h3>Vision-Language-Action & Physical AI</h3>
-        <ul>
-            <li><strong>4D-WAM: 4D Consistent World Modeling for Autonomous Driving.</strong> <span class="paper-tag tag-new">NEW · 2026</span></li>
-            <li><strong>SUV: Future Scene Understanding as Video Generation for End-to-End Driving.</strong> <span class="paper-tag tag-new">NEW · 2026</span></li>
-            <li><strong>WAM-Diff2: Hierarchical AR-to-Diffusion Distillation for Highly Efficient Autonomous Driving VLA.</strong> <span class="paper-tag tag-new">NEW · 2026</span></li>
-            <li><strong>Reason2drive: Towards interpretable and chain-based reasoning for autonomous driving.</strong> <span class="paper-tag tag-venue">ECCV</span><br>M Nie, R Peng, C Wang, X Cai, <strong>J Han</strong>, H Xu, L Zhang</li>
-            <li><strong>Navcot: Boosting LLM-based vision-and-language navigation via learning disentangled reasoning.</strong> <span class="paper-tag tag-venue">TPAMI</span><br>B Lin, Y Nie, Z Wei, J Chen, S Ma, <strong>J Han</strong>, H Xu, X Chang, X Liang</li>
-            <li><strong>SeePhys: Does Seeing Help Thinking? – Benchmarking Vision-Based Physics Reasoning.</strong> <span class="paper-tag tag-venue">NeurIPS</span></li>
-            <li><strong>HiLM-D: Towards High-Resolution Understanding in Multimodal Large Language Models for Autonomous Driving.</strong> <span class="paper-tag tag-venue">IJCV</span><br>X Ding, <strong>J Han</strong>, H Xu, W Zhang, X Li</li>
-        </ul>
+        <div class="publication-controls">
+            <div class="publication-filters" role="group" aria-label="Filter publications by research topic">
+                <button class="publication-filter" type="button" data-filter="all" aria-pressed="true">All</button>
+                <button class="publication-filter" type="button" data-filter="foundation" aria-pressed="false">Multimodal</button>
+                <button class="publication-filter" type="button" data-filter="vla" aria-pressed="false">VLA</button>
+                <button class="publication-filter" type="button" data-filter="world" aria-pressed="false">World Models</button>
+                <button class="publication-filter" type="button" data-filter="robotics" aria-pressed="false">Robotics</button>
+                <button class="publication-filter" type="button" data-filter="driving" aria-pressed="false">Driving</button>
+                <button class="publication-filter" type="button" data-filter="perception" aria-pressed="false">Open-World</button>
+            </div>
+            <div class="publication-count" aria-live="polite"><span id="publicationCount">13</span> signals online</div>
+        </div>
 
-        <h3>Multimodal Foundation Models</h3>
-        <ul>
-            <li><strong>ILLUME: Illuminating Your LLMs to See, Draw, and Self-Enhance.</strong> <span class="paper-tag tag-venue">ICCV</span><br>C Wang, G Lu, J Yang, R Huang, <strong>J Han</strong>, L Hou, W Zhang, H Xu</li>
-            <li><strong>ILLUME+: Illuminating Unified MLLM with Dual Visual Tokenization and Diffusion Refinement.</strong></li>
-            <li><strong>SemHiTok: A Unified Image Tokenizer via Semantic-Guided Hierarchical Codebook.</strong></li>
-            <li><strong>Emova: Empowering language models to see, hear and speak with vivid emotions.</strong> <span class="paper-tag tag-venue">CVPR</span></li>
-            <li><strong>Gaining Wisdom from Setbacks: Aligning Large Language Models via Mistake Analysis.</strong> <span class="paper-tag tag-venue">ICLR</span></li>
-        </ul>
+        <div class="publication-grid">
+            <article class="publication-card" data-topics="vla driving perception">
+                <div class="paper-header"><span class="paper-index">PAPER_01</span><span class="paper-venue">CVPR 2026</span></div>
+                <div class="paper-topics"><span class="paper-topic">VLA</span><span class="paper-topic">Driving</span><span class="paper-topic">Open-World</span></div>
+                <h3><a href="https://arxiv.org/abs/2511.19221" target="_blank" rel="noopener noreferrer">Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving ↗</a></h3>
+                <p class="paper-analysis">Unifies 2D perspective-view and 3D bird's-eye-view perception as world tokens inside one VLM, then connects those representations directly to trajectory prediction.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Spatial grounding and action planning can share a foundation-model backbone without reducing perception to text-only reasoning.</div>
+            </article>
 
-        <h3>Open-Vocabulary Perception (DetCLIP Series)</h3>
-        <ul>
-            <li><strong>DetCLIP: Dictionary-enriched visual-concept paralleled pre-training for open-world detection.</strong> <span class="paper-tag tag-venue">NeurIPS</span><br>L Yao*, <strong>J Han*</strong>, Y Wen, et al.</li>
-            <li><strong>DetCLIPv2: Scalable Open-Vocabulary Object Detection Pre-training via Word-Region Alignment.</strong> <span class="paper-tag tag-venue">CVPR</span></li>
-            <li><strong>DetCLIPv3: Towards Versatile Generative Open-vocabulary Object Detection.</strong> <span class="paper-tag tag-venue">CVPR</span></li>
-            <li><strong>DetGPT: Detect what you need via reasoning.</strong> <span class="paper-tag tag-venue">EMNLP</span></li>
-        </ul>
+            <article class="publication-card" data-topics="vla robotics">
+                <div class="paper-header"><span class="paper-index">PAPER_02</span><span class="paper-venue">CVPR 2026</span></div>
+                <div class="paper-topics"><span class="paper-topic">VLA</span><span class="paper-topic">Robotics</span></div>
+                <h3><a href="https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_AtomicVLA_Unlocking_the_Potential_of_Atomic_Skill_Learning_in_Robots_CVPR_2026_paper.html" target="_blank" rel="noopener noreferrer">AtomicVLA: Unlocking the Potential of Atomic Skill Learning in Robots ↗</a></h3>
+                <p class="paper-analysis">Jointly generates plans, atomic skill abstractions, and low-level actions, using a skill-guided mixture of experts to compose specialized capabilities.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Modular skill routing offers a practical path from monolithic policies toward continual and long-horizon robot learning.</div>
+            </article>
+
+            <article class="publication-card" data-topics="world driving">
+                <div class="paper-header"><span class="paper-index">PAPER_03</span><span class="paper-venue">arXiv 2026</span></div>
+                <div class="paper-topics"><span class="paper-topic">World Models</span><span class="paper-topic">Driving</span></div>
+                <h3><a href="https://arxiv.org/abs/2608.10107" target="_blank" rel="noopener noreferrer">4D-WAM: 4D Consistent World Modeling for Autonomous Driving ↗</a></h3>
+                <p class="paper-analysis">Uses geometric foundation models as training-time supervisors so predicted driving futures preserve 4D structure, with no additional inference cost.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Visually plausible futures are not enough; physically grounded supervision matters most where driving decisions begin to form.</div>
+            </article>
+
+            <article class="publication-card" data-topics="world driving">
+                <div class="paper-header"><span class="paper-index">PAPER_04</span><span class="paper-venue">arXiv 2026</span></div>
+                <div class="paper-topics"><span class="paper-topic">World Models</span><span class="paper-topic">Driving</span></div>
+                <h3><a href="https://arxiv.org/abs/2608.03084" target="_blank" rel="noopener noreferrer">SUV: Future Scene Understanding as Video Generation for End-to-End Driving ↗</a></h3>
+                <p class="paper-analysis">A shared video expert predicts future RGB, semantics, relative depth, and instance dynamics while an action expert reads their latent tokens to plan trajectories.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Generative future prediction can become a common interface between structured scene understanding and end-to-end control.</div>
+            </article>
+
+            <article class="publication-card" data-topics="vla driving">
+                <div class="paper-header"><span class="paper-index">PAPER_05</span><span class="paper-venue">arXiv 2026</span></div>
+                <div class="paper-topics"><span class="paper-topic">VLA</span><span class="paper-topic">Driving</span></div>
+                <h3><a href="https://arxiv.org/abs/2608.01035" target="_blank" rel="noopener noreferrer">WAM-Diff2: Hierarchical AR-to-Diffusion Distillation for Highly Efficient Autonomous Driving VLA ↗</a></h3>
+                <p class="paper-analysis">Transfers an autoregressive driving generalist into a parallel discrete-diffusion model through hierarchical distillation and block-causal attention.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Generation-paradigm conversion can reduce VLA latency while retaining understanding, perception, and planning capabilities.</div>
+            </article>
+
+            <article class="publication-card" data-topics="foundation">
+                <div class="paper-header"><span class="paper-index">PAPER_06</span><span class="paper-venue">ICCV 2025</span></div>
+                <div class="paper-topics"><span class="paper-topic">Multimodal</span></div>
+                <h3><a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Wang_ILLUME_Illuminating_Your_LLMs_to_See_Draw_and_Self-Enhance_ICCV_2025_paper.pdf" target="_blank" rel="noopener noreferrer">ILLUME: Illuminating Your LLMs to See, Draw, and Self-Enhance ↗</a></h3>
+                <p class="paper-analysis">Builds a unified multimodal model around visual understanding and generation, then uses generated visual data to iteratively improve its own capabilities.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Understanding and generation are complementary learning signals rather than separate endpoints.</div>
+            </article>
+
+            <article class="publication-card" data-topics="foundation">
+                <div class="paper-header"><span class="paper-index">PAPER_07</span><span class="paper-venue">CVPR 2025</span></div>
+                <div class="paper-topics"><span class="paper-topic">Multimodal</span></div>
+                <h3><a href="https://arxiv.org/abs/2409.18042" target="_blank" rel="noopener noreferrer">EMOVA: Empowering Language Models to See, Hear and Speak with Vivid Emotions ↗</a></h3>
+                <p class="paper-analysis">Aligns vision, text, and speech end to end with a semantic-acoustic disentangled tokenizer and lightweight controls for expressive speech styles.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Careful tokenization can align additional modalities without requiring scarce fully paired multimodal data.</div>
+            </article>
+
+            <article class="publication-card" data-topics="foundation driving">
+                <div class="paper-header"><span class="paper-index">PAPER_08</span><span class="paper-venue">ECCV 2024</span></div>
+                <div class="paper-topics"><span class="paper-topic">Multimodal</span><span class="paper-topic">Driving</span></div>
+                <h3><a href="https://arxiv.org/abs/2312.03661" target="_blank" rel="noopener noreferrer">Reason2Drive: Towards Interpretable and Chain-Based Reasoning for Autonomous Driving ↗</a></h3>
+                <p class="paper-analysis">Introduces a large video-text benchmark that decomposes driving decisions into perception, prediction, and reasoning chains, plus an evaluation metric for those chains.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Interpretable driving requires evaluating the decision process, not only the final answer or trajectory.</div>
+            </article>
+
+            <article class="publication-card" data-topics="foundation driving">
+                <div class="paper-header"><span class="paper-index">PAPER_09</span><span class="paper-venue">IJCV 2025</span></div>
+                <div class="paper-topics"><span class="paper-topic">Multimodal</span><span class="paper-topic">Driving</span></div>
+                <h3><a href="https://arxiv.org/abs/2309.05186" target="_blank" rel="noopener noreferrer">HiLM-D: Enhancing MLLMs with Multi-Scale High-Resolution Details for Autonomous Driving ↗</a></h3>
+                <p class="paper-analysis">Combines low-resolution temporal reasoning with a high-resolution spatial stream and a lightweight adapter for fine-grained risk-object understanding.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Efficient multimodal systems should allocate visual resolution according to temporal and spatial information needs.</div>
+            </article>
+
+            <article class="publication-card" data-topics="robotics world">
+                <div class="paper-header"><span class="paper-index">PAPER_10</span><span class="paper-venue">TPAMI 2025</span></div>
+                <div class="paper-topics"><span class="paper-topic">Robotics</span><span class="paper-topic">World Models</span></div>
+                <h3><a href="https://arxiv.org/abs/2403.07376" target="_blank" rel="noopener noreferrer">NavCoT: Boosting LLM-Based Vision-and-Language Navigation via Learning Disentangled Reasoning ↗</a></h3>
+                <p class="paper-analysis">Structures navigation reasoning into future imagination, visual observation matching, and action prediction, then learns the process with parameter-efficient tuning.</p>
+                <div class="paper-insight"><strong>Research signal</strong>An embodied agent can use an LLM as both a lightweight world model and an interpretable decision module.</div>
+            </article>
+
+            <article class="publication-card" data-topics="perception foundation">
+                <div class="paper-header"><span class="paper-index">PAPER_11</span><span class="paper-venue">NeurIPS 2022</span></div>
+                <div class="paper-topics"><span class="paper-topic">Open-World</span><span class="paper-topic">Multimodal</span></div>
+                <h3><a href="https://arxiv.org/abs/2209.09407" target="_blank" rel="noopener noreferrer">DetCLIP: Dictionary-Enriched Visual-Concept Paralleled Pre-Training for Open-World Detection ↗</a></h3>
+                <p class="paper-analysis">Reformulates heterogeneous detection data into parallel visual-concept learning and enriches category supervision with a concept dictionary.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Language knowledge can expand a detector beyond the closed label set while keeping pre-training efficient.</div>
+            </article>
+
+            <article class="publication-card" data-topics="perception foundation">
+                <div class="paper-header"><span class="paper-index">PAPER_12</span><span class="paper-venue">CVPR 2023</span></div>
+                <div class="paper-topics"><span class="paper-topic">Open-World</span><span class="paper-topic">Multimodal</span></div>
+                <h3><a href="https://arxiv.org/abs/2304.04514" target="_blank" rel="noopener noreferrer">DetCLIPv2: Scalable Open-Vocabulary Object Detection Pre-Training via Word-Region Alignment ↗</a></h3>
+                <p class="paper-analysis">Learns direct word-region alignment from large-scale image-text pairs under unified detection, grounding, and caption supervision.</p>
+                <div class="paper-insight"><strong>Research signal</strong>Fine-grained alignment makes web-scale image-text data useful for localization without expensive pseudo-label pipelines.</div>
+            </article>
+
+            <article class="publication-card" data-topics="perception foundation">
+                <div class="paper-header"><span class="paper-index">PAPER_13</span><span class="paper-venue">CVPR 2024</span></div>
+                <div class="paper-topics"><span class="paper-topic">Open-World</span><span class="paper-topic">Multimodal</span></div>
+                <h3><a href="https://arxiv.org/abs/2404.09216" target="_blank" rel="noopener noreferrer">DetCLIPv3: Towards Versatile Generative Open-Vocabulary Object Detection ↗</a></h3>
+                <p class="paper-analysis">Adds object-level caption generation and hierarchical concept labels to open-vocabulary detection, bridging localization and dense description.</p>
+                <div class="paper-insight"><strong>Research signal</strong>A detector becomes more versatile when recognition and object-centric generation reinforce each other.</div>
+            </article>
+        </div>
     </div>
 
     <div class="footer">
@@ -1399,6 +1688,39 @@ cat.addEventListener('click', function() {
         bubble.style.opacity = '0';
         bubble.style.transform = 'translateX(110%) scale(0.8)';
     }, 2000);
+});
+
+var publicationButtons = Array.prototype.slice.call(document.querySelectorAll('.publication-filter'));
+var publicationCards = Array.prototype.slice.call(document.querySelectorAll('.publication-card'));
+var publicationCount = document.getElementById('publicationCount');
+
+function setPublicationFilter(filter) {
+    var visibleCount = 0;
+
+    publicationButtons.forEach(function(button) {
+        button.setAttribute('aria-pressed', button.getAttribute('data-filter') === filter ? 'true' : 'false');
+    });
+
+    publicationCards.forEach(function(card) {
+        var topics = card.getAttribute('data-topics').split(' ');
+        var isVisible = filter === 'all' || topics.indexOf(filter) !== -1;
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount++;
+    });
+
+    publicationCount.textContent = visibleCount;
+}
+
+publicationButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        setPublicationFilter(button.getAttribute('data-filter'));
+    });
+});
+
+Array.prototype.slice.call(document.querySelectorAll('[data-filter-link]')).forEach(function(link) {
+    link.addEventListener('click', function() {
+        setPublicationFilter(link.getAttribute('data-filter-link'));
+    });
 });
 
 document.addEventListener('click', function(e) {
