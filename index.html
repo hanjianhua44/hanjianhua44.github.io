@@ -3,992 +3,399 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jianhua Han — research scientist exploring multimodal foundation models, robotics, autonomous driving, VLA and world models for Physical AI.">
-    <meta name="theme-color" content="#f7f8fa">
-    <title>Jianhua Han · Physical AI Research</title>
+    <meta name="description" content="Jianhua Han is a research scientist working on multimodal foundation models, vision-language-action models, robotics, and open-world perception.">
+    <meta name="theme-color" content="#fbfbfa">
+    <meta property="og:title" content="Jianhua Han · Research Scientist">
+    <meta property="og:description" content="Research in multimodal foundation models, vision-language-action models, robotics, and open-world perception.">
+    <meta property="og:type" content="website">
+    <title>Jianhua Han · Research Scientist</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jianhua Han",
+        "jobTitle": "Research Scientist",
+        "affiliation": {
+            "@type": "Organization",
+            "name": "2030 Lab, Yinwang Intelligent Technology Co., Ltd."
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Shanghai Jiao Tong University"
+        },
+        "sameAs": [
+            "https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en",
+            "https://github.com/hanjianhua44"
+        ]
+    }
+    </script>
     <style>
         :root {
-            --primary: #6c5ce7;
-            --secondary: #00cec9;
-            --accent: #fdcb6e;
-            --pink: #e84393;
-            --bg: #0f0f1a;
-            --card: #1a1a2e;
-            --card-hover: #222240;
-            --text: #e2e2e2;
-            --text-muted: #a0a0b8;
+            --paper: #fbfbfa;
+            --surface: #ffffff;
+            --ink: #152238;
+            --ink-soft: #536071;
+            --ink-faint: #7a8491;
+            --navy: #19375d;
+            --navy-light: #eef3f8;
+            --accent: #9b2638;
+            --accent-soft: #f8eef0;
+            --line: #dfe3e8;
+            --line-dark: #c9d0d8;
+            --serif: Georgia, "Times New Roman", serif;
+            --sans: Inter, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            --content: 1080px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
             line-height: 1.7;
-            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .stars {
+        a {
+            color: var(--navy);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(155, 38, 56, 0.25);
+            outline-offset: 3px;
+        }
+
+        .skip-link {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            top: 12px;
+            left: 12px;
+            z-index: 100;
+            padding: 9px 13px;
+            background: var(--ink);
+            color: #fff;
+            transform: translateY(-160%);
+            transition: transform 0.2s ease;
         }
 
-        .star {
-            position: absolute;
-            border-radius: 50%;
-            background: #fff;
-            animation: twinkle var(--duration) ease-in-out infinite alternate;
+        .skip-link:focus {
+            transform: translateY(0);
         }
 
-        @keyframes twinkle {
-            0% { opacity: 0.1; transform: scale(0.8); }
-            100% { opacity: 0.8; transform: scale(1.2); }
-        }
-
-        /* === Bunting Flags === */
-        .bunting {
-            position: fixed;
+        .site-nav {
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .bunting svg { width: 100%; height: 100%; }
-
-        /* === Floating Characters === */
-        .floating-chars {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .float-char {
-            position: absolute;
-            font-size: 2em;
-            animation: floatUp var(--dur) ease-in-out infinite;
-            animation-delay: var(--delay);
-            opacity: 0.6;
-        }
-
-        @keyframes floatUp {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-            25% { transform: translateY(-20px) rotate(5deg); opacity: 0.8; }
-            50% { transform: translateY(-35px) rotate(-3deg); opacity: 0.7; }
-            75% { transform: translateY(-15px) rotate(4deg); opacity: 0.8; }
-        }
-
-        /* === Cute Robot (CSS Art) === */
-        .robot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 30px;
-            z-index: 10;
-            cursor: pointer;
-            animation: robotBob 3s ease-in-out infinite;
-            filter: drop-shadow(0 4px 15px rgba(108, 92, 231, 0.4));
-        }
-
-        @keyframes robotBob {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .robot-container:hover { animation-play-state: paused; }
-        .robot-container:hover .speech-bubble { opacity: 1; transform: translateX(-110%) scale(1); }
-
-        .speech-bubble {
-            position: absolute;
-            top: -10px;
-            left: 0;
-            transform: translateX(-110%) scale(0.8);
-            background: var(--card);
-            border: 1px solid var(--primary);
-            border-radius: 12px;
-            padding: 8px 14px;
-            font-size: 13px;
-            color: var(--text);
-            white-space: nowrap;
-            opacity: 0;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .speech-bubble::after {
-            content: '';
-            position: absolute;
-            right: -8px;
-            top: 16px;
-            border: 4px solid transparent;
-            border-left-color: var(--primary);
-        }
-
-        /* === Balloons === */
-        .balloon-wrap {
-            position: fixed;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .balloon {
-            animation: balloonFloat var(--dur) ease-in-out infinite;
-            animation-delay: var(--delay);
-        }
-
-        @keyframes balloonFloat {
-            0%, 100% { transform: translateY(0) rotate(-2deg); }
-            33% { transform: translateY(-18px) rotate(3deg); }
-            66% { transform: translateY(-8px) rotate(-1deg); }
-        }
-
-        /* === Kawaii Cat === */
-        .cat-container {
-            position: fixed;
-            bottom: 20px;
-            left: 30px;
-            z-index: 10;
-            animation: catPeek 4s ease-in-out infinite;
-            filter: drop-shadow(0 4px 15px rgba(232, 67, 147, 0.3));
-        }
-
-        @keyframes catPeek {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-5px) rotate(-3deg); }
-            75% { transform: translateY(-3px) rotate(3deg); }
-        }
-
-        .cat-container:hover .cat-bubble { opacity: 1; transform: translateX(110%) scale(1); }
-
-        .cat-bubble {
-            position: absolute;
-            top: -10px;
-            right: 0;
-            transform: translateX(110%) scale(0.8);
-            background: var(--card);
-            border: 1px solid var(--pink);
-            border-radius: 12px;
-            padding: 8px 14px;
-            font-size: 13px;
-            color: var(--text);
-            white-space: nowrap;
-            opacity: 0;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .cat-bubble::after {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 16px;
-            border: 4px solid transparent;
-            border-right-color: var(--pink);
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 70px 24px 60px;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 0 40px;
-            position: relative;
-        }
-
-        .avatar-ring {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--pink), var(--accent));
-            padding: 4px;
-            margin: 0 auto 24px;
-            animation: spin 8s linear infinite;
-        }
-
-        .avatar-ring .inner {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 52px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        h1 {
-            font-size: 2.2em;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.05em;
-            margin-bottom: 20px;
-        }
-
-        .quote {
-            font-style: italic;
-            color: var(--accent);
-            font-size: 0.95em;
-            padding: 12px 20px;
-            border-left: 3px solid var(--accent);
-            background: rgba(253, 203, 110, 0.05);
-            border-radius: 0 8px 8px 0;
-            display: inline-block;
-            margin-top: 8px;
-        }
-
-        .badges {
-            margin: 24px 0;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 0.9em;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: var(--card);
-            color: var(--text);
-        }
-
-        .badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
-            border-color: var(--primary);
-        }
-
-        .badge .icon { font-size: 1.1em; }
-
-        .card {
-            background: var(--card);
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            background: var(--card-hover);
-            border-color: rgba(108, 92, 231, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-        }
-
-        .card-deco {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 2.8em;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-
-        .card h2 {
-            font-size: 1.4em;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card h2 .emoji {
-            font-size: 1.3em;
-            display: inline-block;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .card h3 {
-            color: var(--secondary);
-            font-size: 1.05em;
-            margin: 18px 0 8px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        .card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .card ul li {
-            padding: 6px 0 6px 24px;
-            position: relative;
-            color: var(--text-muted);
-        }
-
-        .card ul li::before {
-            content: '▸';
-            position: absolute;
-            left: 4px;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .card ul li strong {
-            color: var(--text);
-        }
-
-        .card a {
-            color: var(--secondary);
-            text-decoration: none;
-        }
-
-        .card a:hover {
-            text-decoration: underline;
-        }
-
-        .project-highlight {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 18px;
-            margin-top: 14px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.14), rgba(0, 206, 201, 0.08));
-            border: 1px solid rgba(108, 92, 231, 0.28);
-        }
-
-        .project-highlight .project-icon {
-            font-size: 2em;
-            line-height: 1;
-        }
-
-        .project-highlight h3 {
-            margin: 0 0 4px;
-        }
-
-        .project-highlight p {
-            margin: 0 0 10px;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            background: rgba(0, 206, 201, 0.12);
-            border: 1px solid rgba(0, 206, 201, 0.25);
-            font-size: 0.88em;
-            font-weight: 600;
-        }
-
-        .visitor-stats {
-            text-align: center;
-        }
-
-        .visitor-counter {
-            display: inline-block;
-            margin-top: 8px;
-            padding: 12px;
-            border-radius: 12px;
-            background: #1a1a2e;
-            border: 1px solid rgba(108, 92, 231, 0.35);
-            min-height: 80px;
-        }
-
-        .visitor-counter img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .visitor-note {
-            margin-top: 10px;
-            font-size: 0.82em;
-            color: var(--text-muted);
-        }
-
-        .hiring-card {
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(0, 206, 201, 0.1));
-            border-color: rgba(108, 92, 231, 0.3);
-        }
-
-        .hiring-card:hover {
-            border-color: var(--primary);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .info-item {
-            background: rgba(255,255,255,0.03);
-            padding: 14px 16px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.95em;
-        }
-
-        .info-item .icon { font-size: 1.2em; }
-        .info-item .label { color: var(--text-muted); }
-        .info-item .value { color: var(--text); font-weight: 500; }
-
-        .paper-tag {
-            display: inline-block;
-            font-size: 0.75em;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            margin-left: 6px;
-            vertical-align: middle;
-        }
-
-        .tag-new {
-            background: rgba(253, 203, 110, 0.2);
-            color: var(--accent);
-        }
-
-        .tag-venue {
-            background: rgba(108, 92, 231, 0.2);
-            color: #a29bfe;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 20px;
-            border-left: 2px solid rgba(108, 92, 231, 0.3);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 6px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-
-        .timeline-item h3 { margin-top: 0; }
-
-        .wave {
-            display: inline-block;
-            animation: wave 2.5s ease-in-out infinite;
-            transform-origin: 70% 70%;
-        }
-
-        @keyframes wave {
-            0%, 60%, 100% { transform: rotate(0deg); }
-            10% { transform: rotate(14deg); }
-            20% { transform: rotate(-8deg); }
-            30% { transform: rotate(14deg); }
-            40% { transform: rotate(-4deg); }
-            50% { transform: rotate(10deg); }
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-muted);
-            font-size: 0.85em;
-        }
-
-        .footer .footer-chars {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-            letter-spacing: 6px;
-        }
-
-        .footer a { color: var(--secondary); text-decoration: none; }
-
-        .confetti {
-            position: fixed;
-            pointer-events: none;
-            z-index: 999;
-            animation: fall linear forwards;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* === Cyberpunk Research Interface === */
-        :root {
-            --primary: #00f0ff;
-            --secondary: #7cff6b;
-            --accent: #ffe66d;
-            --pink: #ff2e97;
-            --bg: #05070d;
-            --card: rgba(10, 18, 32, 0.88);
-            --card-hover: rgba(13, 25, 43, 0.96);
-            --text: #eafcff;
-            --text-muted: #8ca9b5;
-            --line: rgba(0, 240, 255, 0.2);
-        }
-
-        body {
-            font-family: "Segoe UI", "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
-            background:
-                radial-gradient(circle at 15% 18%, rgba(255, 46, 151, 0.13), transparent 26rem),
-                radial-gradient(circle at 86% 26%, rgba(0, 240, 255, 0.11), transparent 30rem),
-                linear-gradient(180deg, #05070d 0%, #070b14 52%, #03050a 100%);
-            letter-spacing: 0.01em;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
             z-index: 20;
-            pointer-events: none;
-            background: repeating-linear-gradient(
-                to bottom,
-                transparent 0,
-                transparent 3px,
-                rgba(0, 240, 255, 0.018) 4px
-            );
-            mix-blend-mode: screen;
+            border-bottom: 1px solid rgba(223, 227, 232, 0.92);
+            background: rgba(251, 251, 250, 0.94);
+            backdrop-filter: blur(14px);
         }
 
-        .cyber-grid {
-            position: fixed;
-            left: -20%;
-            right: -20%;
-            bottom: -12vh;
-            height: 52vh;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.19;
-            transform: perspective(340px) rotateX(63deg);
-            transform-origin: bottom;
-            background-image:
-                linear-gradient(rgba(0, 240, 255, 0.7) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.7) 1px, transparent 1px);
-            background-size: 52px 36px;
-            mask-image: linear-gradient(to top, #000 35%, transparent 100%);
-        }
-
-        .bunting,
-        .balloon-wrap,
-        .floating-chars,
-        .cat-container {
-            display: none;
-        }
-
-        .stars {
-            opacity: 0.34;
-        }
-
-        .container {
-            max-width: 980px;
-            padding-top: 30px;
-            counter-reset: module;
-        }
-
-        .system-bar {
+        .nav-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 16px;
-            padding: 10px 14px;
-            border: 1px solid var(--line);
-            border-top-color: rgba(0, 240, 255, 0.65);
-            background: rgba(4, 10, 18, 0.76);
-            color: var(--text-muted);
-            font-size: 0.72rem;
+            gap: 28px;
+            width: min(var(--content), calc(100% - 48px));
+            min-height: 64px;
+            margin: 0 auto;
+        }
+
+        .site-name {
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 1.08rem;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #475569;
+            font-size: 0.79rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .page {
+            width: min(var(--content), calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 245px;
+            gap: 78px;
+            align-items: start;
+            padding: 96px 0 82px;
+            border-bottom: 1px solid var(--line-dark);
+        }
+
+        .eyebrow {
+            margin: 0 0 15px;
+            color: var(--accent);
+            font-size: 0.74rem;
+            font-weight: 700;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.06);
-            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
         }
 
-        .system-bar strong {
-            color: var(--secondary);
-            font-weight: 600;
-        }
-
-        .signal {
-            display: inline-block;
-            width: 7px;
-            height: 7px;
-            margin-right: 8px;
-            border-radius: 50%;
-            background: var(--secondary);
-            box-shadow: 0 0 10px var(--secondary);
-            animation: pulseSignal 1.8s ease-in-out infinite;
-        }
-
-        @keyframes pulseSignal {
-            50% { opacity: 0.35; }
-        }
-
-        header {
-            min-height: 520px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 72px 0 56px;
-        }
-
-        .hero-kicker {
-            color: var(--primary);
-            font-size: 0.76rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .hero-kicker::before,
-        .hero-kicker::after {
-            content: "//";
-            color: var(--pink);
-            margin: 0 10px;
-        }
-
-        .avatar-ring {
-            width: 112px;
-            height: 112px;
-            border-radius: 4px;
-            padding: 2px;
-            background: linear-gradient(135deg, var(--primary), transparent 35%, var(--pink));
-            clip-path: polygon(16% 0, 84% 0, 100% 16%, 100% 84%, 84% 100%, 16% 100%, 0 84%, 0 16%);
-            animation: avatarGlow 3.5s ease-in-out infinite;
-        }
-
-        .avatar-ring .inner {
-            border-radius: 3px;
-            background: #07101c;
-            clip-path: inherit;
-        }
-
-        .cyber-core {
-            width: 76px;
-            height: 76px;
-            color: var(--primary);
-            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.65));
-        }
-
-        .cyber-core .core-orbit {
-            transform-origin: 38px 38px;
-            animation: coreSpin 7s linear infinite;
-        }
-
-        .cyber-core .core-orbit-reverse {
-            transform-origin: 38px 38px;
-            animation: coreSpinReverse 5s linear infinite;
-        }
-
-        .cyber-core .core-pulse {
-            animation: corePulse 1.8s ease-in-out infinite;
-        }
-
-        @keyframes coreSpin {
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes coreSpinReverse {
-            to { transform: rotate(-360deg); }
-        }
-
-        @keyframes corePulse {
-            50% { opacity: 0.35; transform: scale(0.82); transform-origin: center; }
-        }
-
-        @keyframes avatarGlow {
-            0%, 100% { filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.35)); }
-            50% { filter: drop-shadow(0 0 16px rgba(255, 46, 151, 0.45)); }
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
         }
 
         h1 {
-            position: relative;
-            font-size: clamp(2.1rem, 6vw, 4rem);
-            line-height: 1.08;
-            letter-spacing: -0.04em;
-            text-transform: uppercase;
-            background: linear-gradient(90deg, #fff 5%, var(--primary) 46%, #fff 52%, var(--pink) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            filter: drop-shadow(3px 3px 0 rgba(255, 46, 151, 0.22));
+            margin-bottom: 16px;
+            color: #101d31;
+            font-family: var(--serif);
+            font-size: clamp(3.35rem, 7vw, 5.5rem);
+            font-weight: 600;
+            letter-spacing: -0.055em;
+            line-height: 0.98;
         }
 
-        .subtitle {
-            color: var(--text);
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-            font-size: 0.88rem;
+        .hero-role {
+            margin-bottom: 20px;
+            color: #31435c;
+            font-family: var(--serif);
+            font-size: 1.17rem;
         }
 
-        .quote {
-            max-width: 790px;
-            margin-top: 22px;
-            padding: 16px 22px;
-            border: 1px solid rgba(255, 230, 109, 0.34);
+        .hero-lead {
+            max-width: 720px;
+            margin-bottom: 22px;
+            color: var(--ink-soft);
+            font-size: 1.03rem;
+            line-height: 1.8;
+        }
+
+        .thesis {
+            max-width: 720px;
+            margin: 0 0 25px;
+            padding: 13px 18px;
             border-left: 3px solid var(--accent);
-            border-radius: 0;
-            background: rgba(255, 230, 109, 0.035);
-            color: var(--accent);
-            font-family: Georgia, serif;
-            font-size: 1rem;
-            box-shadow: inset 14px 0 25px rgba(255, 230, 109, 0.035);
+            background: #f1f3f5;
+            color: #445064;
+            font-family: var(--serif);
+            font-size: 0.98rem;
+            font-style: italic;
         }
 
-        .quote::before {
-            content: "THESIS_";
-            display: block;
-            margin-bottom: 5px;
-            color: var(--text-muted);
-            font-family: Consolas, monospace;
-            font-size: 0.65rem;
-            font-style: normal;
-            letter-spacing: 0.22em;
+        .profile-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
         }
 
-        .badge {
-            border-radius: 2px;
-            border-color: var(--line);
-            background: rgba(6, 16, 27, 0.82);
-            font-size: 0.82rem;
-            letter-spacing: 0.04em;
-            clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
+        .profile-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 39px;
+            padding: 7px 13px;
+            border: 1px solid var(--line-dark);
+            border-radius: 3px;
+            background: var(--surface);
+            color: #314158;
+            font-size: 0.79rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
         }
 
-        .badge:hover {
-            color: #041014;
-            background: var(--primary);
-            border-color: var(--primary);
-            box-shadow: 0 0 22px rgba(0, 240, 255, 0.35);
+        .profile-link:hover {
+            border-color: var(--navy);
+            background: var(--navy);
+            color: #fff;
         }
 
-        .card {
-            counter-increment: module;
-            border-radius: 2px;
-            border: 1px solid var(--line);
-            border-top-color: rgba(0, 240, 255, 0.58);
-            background:
-                linear-gradient(135deg, rgba(0, 240, 255, 0.035), transparent 32%),
-                var(--card);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 16px 60px rgba(0, 0, 0, 0.28);
-            clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+        .hero-aside {
+            padding: 6px 0 0;
         }
 
-        .card::before {
-            content: "MODULE_0" counter(module);
-            position: absolute;
-            top: 12px;
-            right: 18px;
-            color: rgba(0, 240, 255, 0.35);
-            font-size: 0.62rem;
-            letter-spacing: 0.16em;
+        .fact-list {
+            margin: 0;
         }
 
-        .card::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 70px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--pink), transparent);
-            box-shadow: 0 0 12px var(--pink);
+        .fact {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--line);
         }
 
-        .card:hover {
-            border-color: rgba(0, 240, 255, 0.55);
-            background-color: var(--card-hover);
-            box-shadow: 0 18px 65px rgba(0, 240, 255, 0.1);
+        .fact:first-child {
+            padding-top: 0;
         }
 
-        .card-deco {
-            top: auto;
-            right: 18px;
-            bottom: 10px;
-            opacity: 0.07;
-            filter: saturate(0) brightness(2);
-        }
-
-        .card h2 {
-            color: var(--text);
+        .fact dt {
+            margin-bottom: 3px;
+            color: var(--ink-faint);
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
         }
 
-        .card h2::after {
-            content: "";
-            width: 56px;
-            height: 1px;
-            margin-left: 6px;
-            background: linear-gradient(90deg, var(--primary), transparent);
+        .fact dd {
+            margin: 0;
+            color: #2d3b50;
+            font-family: var(--serif);
+            font-size: 0.93rem;
+            line-height: 1.45;
         }
 
-        .card h3 {
-            color: var(--primary);
-            letter-spacing: 0.02em;
+        .section {
+            padding: 72px 0;
+            border-bottom: 1px solid var(--line-dark);
+            scroll-margin-top: 82px;
         }
 
-        .card ul li::before {
-            content: ">";
-            color: var(--pink);
+        .section-header {
+            display: grid;
+            grid-template-columns: 160px minmax(0, 1fr);
+            gap: 30px;
+            margin-bottom: 34px;
         }
 
-        .project-highlight,
-        .info-item,
-        .visitor-counter {
-            border-radius: 2px;
-            border-color: var(--line);
-            background: rgba(0, 240, 255, 0.035);
+        .section-kicker {
+            padding-top: 7px;
+            color: var(--accent);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            margin-bottom: 9px;
+            color: #15243a;
+            font-family: var(--serif);
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+
+        .section-title p {
+            max-width: 720px;
+            margin-bottom: 0;
+            color: var(--ink-soft);
+            font-size: 0.94rem;
         }
 
         .topic-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
+            gap: 18px;
+            margin-left: 190px;
         }
 
-        .topic-item {
-            position: relative;
-            min-height: 150px;
-            padding: 20px 20px 18px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 240, 255, 0.16);
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.055), rgba(255, 46, 151, 0.025));
-            clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
-            transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+        .topic {
+            display: flex;
+            flex-direction: column;
+            min-height: 210px;
+            padding: 25px;
+            border: 1px solid var(--line);
+            border-top: 3px solid var(--navy);
+            background: var(--surface);
+            box-shadow: 0 5px 18px rgba(25, 42, 63, 0.035);
+            transition: transform 0.18s ease, border-top-color 0.18s ease, box-shadow 0.18s ease;
         }
 
-        .topic-item:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0, 240, 255, 0.55);
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(255, 46, 151, 0.05));
+        .topic:hover {
+            border-top-color: var(--accent);
+            box-shadow: 0 10px 26px rgba(25, 42, 63, 0.07);
+            transform: translateY(-2px);
         }
 
-        .topic-id {
-            display: block;
-            margin-bottom: 14px;
-            color: var(--pink);
-            font-size: 0.66rem;
-            letter-spacing: 0.18em;
-        }
-
-        .topic-item h3 {
-            margin: 0 0 7px;
-            color: var(--text);
-            font-size: 1rem;
-        }
-
-        .topic-item p {
-            margin: 0;
-            font-size: 0.87rem;
-            line-height: 1.6;
-        }
-
-        .topic-jump {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 14px;
-            color: var(--primary);
-            font-size: 0.72rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .topic-jump:hover {
+        .topic-number {
+            margin-bottom: 19px;
             color: var(--accent);
-            text-decoration: none !important;
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
         }
 
-        .topic-item::after {
-            content: "";
-            position: absolute;
-            right: -16px;
-            bottom: -16px;
-            width: 52px;
-            height: 52px;
-            border: 1px solid rgba(0, 240, 255, 0.18);
-            transform: rotate(45deg);
+        .topic h3 {
+            margin-bottom: 9px;
+            color: #172b48;
+            font-family: var(--serif);
+            font-size: 1.23rem;
+            font-weight: 600;
         }
 
-        .project-link {
-            border-radius: 2px;
-            color: var(--primary);
+        .topic p {
+            margin-bottom: 18px;
+            color: var(--ink-soft);
+            font-size: 0.87rem;
+            line-height: 1.65;
         }
 
-        .paper-tag {
-            border-radius: 1px;
-            letter-spacing: 0.04em;
+        .topic a {
+            margin-top: auto;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-decoration: none;
         }
 
-        .tag-new {
-            color: #06120d;
-            background: var(--secondary);
+        .publication-heading-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
         }
 
-        .tag-venue {
-            color: var(--primary);
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.18);
-        }
-
-        .publication-intro {
-            max-width: 760px;
-            margin-bottom: 20px !important;
+        .scholar-link {
+            flex: 0 0 auto;
+            margin-bottom: 5px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-decoration: none;
         }
 
         .publication-controls {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 14px;
-            margin-bottom: 20px;
-            padding: 12px 0;
-            border-top: 1px solid rgba(0, 240, 255, 0.12);
-            border-bottom: 1px solid rgba(0, 240, 255, 0.12);
+            gap: 16px;
+            margin-bottom: 0;
+            padding: 15px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line-dark);
         }
 
         .publication-filters {
@@ -997,1252 +404,826 @@
             gap: 7px;
         }
 
-        .publication-filter {
+        .filter-button {
             appearance: none;
-            padding: 7px 10px;
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            background: rgba(0, 240, 255, 0.025);
-            color: var(--text-muted);
-            font: inherit;
-            font-size: 0.68rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
+            min-height: 34px;
+            padding: 5px 10px;
+            border: 1px solid var(--line-dark);
+            border-radius: 3px;
+            background: var(--surface);
+            color: #566274;
+            font: 600 0.7rem/1 var(--sans);
             cursor: pointer;
-            transition: all 0.2s ease;
         }
 
-        .publication-filter:hover,
-        .publication-filter[aria-pressed="true"] {
-            border-color: var(--primary);
-            background: rgba(0, 240, 255, 0.13);
-            color: var(--text);
-            box-shadow: 0 0 16px rgba(0, 240, 255, 0.08);
+        .filter-button:hover,
+        .filter-button[aria-pressed="true"] {
+            border-color: var(--navy);
+            background: var(--navy);
+            color: #fff;
         }
 
         .publication-count {
             flex: 0 0 auto;
-            color: var(--secondary);
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            color: var(--ink-faint);
+            font-size: 0.71rem;
         }
 
-        .publication-grid {
+        .publication-list {
+            border-bottom: 1px solid var(--line-dark);
+        }
+
+        .publication {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .publication-card {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 285px;
-            padding: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 240, 255, 0.15);
-            background:
-                linear-gradient(145deg, rgba(0, 240, 255, 0.05), transparent 42%),
-                rgba(4, 11, 20, 0.7);
-            clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 13px, 100% 100%, 0 100%);
-            transition: transform 0.24s ease, border-color 0.24s ease, opacity 0.24s ease;
-        }
-
-        .publication-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0, 240, 255, 0.5);
-        }
-
-        .publication-card[hidden] {
-            display: none;
-        }
-
-        .publication-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 13px;
-            height: 13px;
-            background: var(--primary);
-            opacity: 0.45;
-        }
-
-        .paper-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        .paper-index {
-            color: var(--pink);
-            font-size: 0.68rem;
-            letter-spacing: 0.16em;
-        }
-
-        .paper-venue {
-            color: var(--text-muted);
-            font-size: 0.67rem;
-            letter-spacing: 0.08em;
-            text-align: right;
-            text-transform: uppercase;
-        }
-
-        .paper-topics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-bottom: 12px;
-        }
-
-        .paper-topic {
-            padding: 3px 6px;
-            border: 1px solid rgba(124, 255, 107, 0.18);
-            color: var(--secondary);
-            font-size: 0.58rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
-
-        .publication-card h3 {
-            margin: 0 0 12px;
-            font-size: 1rem;
-            line-height: 1.45;
-            letter-spacing: 0;
-        }
-
-        .publication-card h3 a {
-            color: var(--text);
-            text-decoration: none;
-        }
-
-        .publication-card h3 a:hover {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .paper-analysis {
-            margin: 0 0 16px !important;
-            font-size: 0.82rem;
-            line-height: 1.65;
-        }
-
-        .paper-insight {
-            margin-top: auto;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            color: var(--text);
-            font-size: 0.72rem;
-            line-height: 1.55;
-        }
-
-        .paper-insight strong {
-            display: block;
-            margin-bottom: 3px;
-            color: var(--accent);
-            font-size: 0.58rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-        }
-
-        .timeline-item {
-            border-left-color: rgba(0, 240, 255, 0.27);
-        }
-
-        .timeline-item::before {
-            border-radius: 0;
-            background: var(--primary);
-            box-shadow: 0 0 10px var(--primary);
-            transform: rotate(45deg);
-        }
-
-        .hiring-card {
-            background:
-                linear-gradient(120deg, rgba(255, 46, 151, 0.09), transparent 45%),
-                var(--card);
-            border-left: 2px solid var(--pink);
-        }
-
-        .robot-container {
-            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.45)) hue-rotate(75deg);
-        }
-
-        .footer {
-            border-top-color: var(--line);
-            letter-spacing: 0.08em;
-        }
-
-        .footer .visitor-counter {
-            min-height: 0;
-            margin: 16px auto 14px;
-            padding: 5px;
-            opacity: 0.68;
-            transition: opacity 0.2s ease, border-color 0.2s ease;
-        }
-
-        .footer .visitor-counter:hover {
-            opacity: 1;
-            border-color: var(--primary);
-        }
-
-        .footer .visitor-counter img {
-            display: block;
-            width: 120px;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .footer .visitor-note {
-            margin: 0;
-            font-size: 0.64rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        /* === Academic Light Theme === */
-        :root {
-            --primary: #9f2337;
-            --secondary: #245c8a;
-            --accent: #a97820;
-            --pink: #9f2337;
-            --bg: #f7f8fa;
-            --card: #ffffff;
-            --card-hover: #ffffff;
-            --text: #172033;
-            --text-muted: #5d6778;
-            --line: #dfe3e9;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #f7f8fa;
-            color: var(--text);
-            font-family: Inter, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-            letter-spacing: 0;
-        }
-
-        body::before,
-        .cyber-grid,
-        .stars,
-        .robot-container,
-        .bunting,
-        .balloon-wrap,
-        .floating-chars,
-        .cat-container {
-            display: none;
-        }
-
-        .container {
-            max-width: 1040px;
-            padding: 0 34px 64px;
-            counter-reset: none;
-        }
-
-        .system-bar {
-            display: none;
-        }
-
-        header {
-            min-height: 0;
-            align-items: flex-start;
-            padding: 82px 0 58px;
-            text-align: left;
+            grid-template-columns: 132px minmax(0, 1fr);
+            padding: 28px 0;
             border-bottom: 1px solid var(--line);
         }
 
-        .hero-kicker {
-            order: 1;
-            margin: 0 0 13px;
-            color: var(--primary);
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
+        .publication:last-child {
+            border-bottom: 0;
         }
 
-        .hero-kicker::before,
-        .hero-kicker::after {
+        .publication[hidden] {
             display: none;
         }
 
-        .avatar-ring {
-            order: 0;
-            width: 84px;
-            height: 84px;
-            margin: 0 0 25px;
-            padding: 0;
-            border: 1px solid #c8ced7;
-            border-radius: 50%;
-            background: #eef1f5;
-            clip-path: none;
-            animation: none;
-        }
-
-        .avatar-ring .inner {
-            position: relative;
-            border-radius: 50%;
-            background: #eef1f5;
-            clip-path: none;
-        }
-
-        .avatar-ring .inner::after {
-            content: "JH";
-            color: #25354d;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.65rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-        }
-
-        .cyber-core {
-            display: none;
-        }
-
-        h1 {
-            order: 2;
-            margin: 0 0 10px;
-            color: #111b2d;
-            background: none;
-            -webkit-text-fill-color: #111b2d;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(2.65rem, 6vw, 4.5rem);
-            font-weight: 600;
-            letter-spacing: -0.035em;
-            line-height: 1.03;
-            text-transform: none;
-            filter: none;
-        }
-
-        .subtitle {
-            order: 3;
-            margin-bottom: 20px;
-            color: #46546a;
-            font-size: 1rem;
-            letter-spacing: 0.02em;
-            text-transform: none;
-        }
-
-        .quote {
-            order: 4;
-            max-width: 760px;
-            margin: 0;
-            padding: 14px 20px;
-            border: 0;
-            border-left: 3px solid var(--primary);
-            border-radius: 0;
-            background: #f0f2f5;
-            box-shadow: none;
-            color: #485466;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1rem;
-        }
-
-        .quote::before {
-            display: none;
-        }
-
-        .badges {
-            order: 5;
-            justify-content: flex-start;
-            margin: 25px 0 0;
-            gap: 9px;
-        }
-
-        .badge {
-            padding: 8px 14px;
-            border-color: #d6dbe2;
-            border-radius: 4px;
-            background: #ffffff;
-            clip-path: none;
-            color: #314158;
-            font-size: 0.83rem;
-            letter-spacing: 0;
-        }
-
-        .badge:hover {
-            color: #ffffff;
-            background: var(--primary);
-            border-color: var(--primary);
-            box-shadow: none;
-            transform: translateY(-1px);
-        }
-
-        .card {
-            margin: 0;
-            padding: 48px 0;
-            overflow: visible;
-            border: 0;
-            border-bottom: 1px solid var(--line);
-            border-radius: 0;
-            background: transparent;
-            clip-path: none;
-            box-shadow: none;
-            backdrop-filter: none;
-            counter-increment: none;
-        }
-
-        .card:hover {
-            border-color: var(--line);
-            background: transparent;
-            box-shadow: none;
-            transform: none;
-        }
-
-        .card::before,
-        .card::after,
-        .card-deco {
-            display: none;
-        }
-
-        .card h2 {
-            margin-bottom: 22px;
-            color: #172033;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            text-transform: none;
-        }
-
-        .card h2::after {
-            width: 44px;
-            height: 2px;
-            background: var(--primary);
-        }
-
-        .card h2 .emoji {
-            display: none;
-        }
-
-        .card h3 {
-            color: #203a5f;
-        }
-
-        .card p,
-        .card ul li {
-            color: var(--text-muted);
-        }
-
-        .card a {
-            color: #1f5e91;
-        }
-
-        .info-grid {
-            gap: 0;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .info-item {
-            padding: 16px 18px;
-            border: 0;
-            border-right: 1px solid var(--line);
-            border-radius: 0;
-            background: transparent;
-        }
-
-        .info-item:last-child {
-            border-right: 0;
-        }
-
-        .topic-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .topic-item {
-            min-height: 0;
-            padding: 24px;
-            border: 1px solid var(--line);
-            border-top: 3px solid #273c5a;
-            background: #ffffff;
-            clip-path: none;
-            box-shadow: 0 5px 18px rgba(30, 43, 61, 0.04);
-        }
-
-        .topic-item:hover {
-            border-color: #cbd1d9;
-            border-top-color: var(--primary);
-            background: #ffffff;
-            box-shadow: 0 8px 24px rgba(30, 43, 61, 0.08);
-            transform: translateY(-2px);
-        }
-
-        .topic-item::after {
-            display: none;
-        }
-
-        .topic-id {
-            color: var(--primary);
-            font-family: Georgia, "Times New Roman", serif;
-            letter-spacing: 0.1em;
-        }
-
-        .topic-item h3 {
-            color: #172033;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.18rem;
-        }
-
-        .topic-jump {
-            color: #1f5e91;
-            letter-spacing: 0;
-            text-transform: none;
-        }
-
-        .project-highlight {
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            background: #ffffff;
-            box-shadow: 0 5px 18px rgba(30, 43, 61, 0.04);
-        }
-
-        .project-icon {
-            display: none;
-        }
-
-        .project-link {
-            border-color: #cfd6df;
-            border-radius: 3px;
-            background: #f5f7fa;
-            color: #1f5e91;
-        }
-
-        .hiring-card {
-            padding-left: 28px;
-            border-left: 3px solid var(--primary);
-            background: transparent;
-        }
-
-        .timeline-item {
-            border-left-color: #ccd4de;
-        }
-
-        .timeline-item::before {
-            border-radius: 50%;
-            background: var(--primary);
-            box-shadow: none;
-            transform: none;
-        }
-
-        .publication-intro {
-            color: #5c6675 !important;
-        }
-
-        .publication-controls {
-            padding: 14px 0;
-            border-color: var(--line);
-        }
-
-        .publication-filter {
-            border-color: #d5dae1;
-            border-radius: 3px;
-            background: #ffffff;
-            color: #536073;
-            letter-spacing: 0;
-            text-transform: none;
-        }
-
-        .publication-filter:hover,
-        .publication-filter[aria-pressed="true"] {
-            border-color: #243b5a;
-            background: #243b5a;
-            color: #ffffff;
-            box-shadow: none;
-        }
-
-        .publication-count {
-            color: #6a7483;
-            letter-spacing: 0.04em;
-            text-transform: none;
-        }
-
-        .publication-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0;
-            border-top: 1px solid #cfd5dd;
-        }
-
-        .publication-card {
-            display: grid;
-            grid-template-columns: 125px minmax(0, 1fr);
-            min-height: 0;
-            padding: 27px 0;
-            border: 0;
-            border-bottom: 1px solid #dfe3e9;
-            background: transparent;
-            clip-path: none;
-            transition: background 0.2s ease;
-        }
-
-        .publication-card:hover {
-            border-color: #dfe3e9;
-            background: #ffffff;
-            transform: none;
-        }
-
-        .publication-card::after {
-            display: none;
-        }
-
-        .paper-header {
-            grid-column: 1;
-            grid-row: 1 / span 4;
-            align-items: flex-start;
-            justify-content: flex-start;
-            flex-direction: column;
-            gap: 8px;
-            margin: 0 24px 0 0;
+        .publication-meta {
+            margin-right: 26px;
             padding-right: 24px;
             border-right: 1px solid var(--line);
         }
 
-        .paper-index {
-            color: var(--primary);
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 0.72rem;
-            letter-spacing: 0.08em;
+        .publication-year {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--accent);
+            font-family: var(--serif);
+            font-size: 1rem;
+            font-weight: 700;
         }
 
-        .paper-venue {
-            color: #6a7483;
-            font-size: 0.68rem;
-            line-height: 1.5;
-            text-align: left;
+        .publication-venue {
+            display: block;
+            color: var(--ink-faint);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            line-height: 1.45;
+            text-transform: uppercase;
         }
 
-        .paper-topics,
-        .publication-card h3,
-        .paper-analysis,
-        .paper-insight {
-            grid-column: 2;
-        }
-
-        .paper-topics {
+        .publication-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
             margin-bottom: 9px;
         }
 
-        .paper-topic {
-            border: 0;
+        .publication-tag {
+            padding: 3px 7px;
             border-radius: 2px;
-            background: #eef2f6;
-            color: #4f5f72;
+            background: var(--navy-light);
+            color: #50647e;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.025em;
+            text-transform: uppercase;
+        }
+
+        .publication h3 {
+            margin-bottom: 8px;
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.42;
+        }
+
+        .publication h3 a {
+            color: #173153;
+            text-decoration: none;
+        }
+
+        .publication h3 a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .publication-summary {
+            margin-bottom: 11px;
+            color: #596575;
+            font-size: 0.86rem;
+            line-height: 1.65;
+        }
+
+        .publication-insight {
+            margin-bottom: 0;
+            padding: 9px 12px;
+            border-left: 2px solid #b7c3d1;
+            background: #f1f3f5;
+            color: #4d5968;
+            font-size: 0.76rem;
+            line-height: 1.55;
+        }
+
+        .publication-insight strong {
+            color: var(--accent);
+            font-size: 0.64rem;
+            letter-spacing: 0.055em;
+            text-transform: uppercase;
+        }
+
+        .experience-list {
+            margin-left: 190px;
+        }
+
+        .experience {
+            display: grid;
+            grid-template-columns: 160px minmax(0, 1fr);
+            gap: 26px;
+            padding: 27px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .experience:last-child {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .experience-period {
+            color: var(--accent);
+            font-family: var(--serif);
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .experience h3 {
+            margin-bottom: 4px;
+            color: #182c49;
+            font-family: var(--serif);
+            font-size: 1.12rem;
+            font-weight: 600;
+        }
+
+        .experience-org {
+            margin-bottom: 11px;
+            color: var(--ink-faint);
+            font-size: 0.78rem;
+            font-weight: 700;
             letter-spacing: 0.02em;
         }
 
-        .publication-card h3 {
-            margin-bottom: 8px;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.08rem;
+        .experience p {
+            margin-bottom: 0;
+            color: var(--ink-soft);
+            font-size: 0.88rem;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 18px;
+            margin-left: 190px;
+        }
+
+        .work-card {
+            padding: 27px;
+            border: 1px solid var(--line);
+            background: var(--surface);
+        }
+
+        .work-label {
+            display: block;
+            margin-bottom: 13px;
+            color: var(--accent);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .work-card h3 {
+            margin-bottom: 9px;
+            color: #172b48;
+            font-family: var(--serif);
+            font-size: 1.28rem;
             font-weight: 600;
-            line-height: 1.4;
         }
 
-        .publication-card h3 a {
-            color: #172f52;
+        .work-card p {
+            color: var(--ink-soft);
+            font-size: 0.88rem;
         }
 
-        .publication-card h3 a:hover {
-            color: var(--primary);
+        .work-card a {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-decoration: none;
         }
 
-        .paper-analysis {
-            margin-bottom: 10px !important;
-            color: #596575 !important;
-            font-size: 0.86rem;
+        .contact-section {
+            display: grid;
+            grid-template-columns: 160px minmax(0, 1fr);
+            gap: 30px;
+            padding: 64px 0;
         }
 
-        .paper-insight {
-            margin-top: 0;
-            padding: 9px 12px;
-            border: 0;
-            border-left: 2px solid #b8c3d0;
-            background: #f2f4f7;
-            color: #4d5969;
-            font-size: 0.76rem;
+        .contact-panel {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 30px;
+            border: 1px solid var(--line-dark);
+            background: var(--surface);
         }
 
-        .paper-insight strong {
-            color: var(--primary);
-            letter-spacing: 0.08em;
+        .contact-panel h2 {
+            margin-bottom: 7px;
+            color: #172b48;
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 600;
         }
 
-        .footer {
-            margin-top: 0;
-            padding-top: 36px;
-            border-top: 0;
-            color: #7a8390;
+        .contact-panel p {
+            max-width: 650px;
+            margin-bottom: 0;
+            color: var(--ink-soft);
+            font-size: 0.9rem;
         }
 
-        .footer-chars {
-            display: none;
+        .contact-button {
+            flex: 0 0 auto;
+            padding: 10px 16px;
+            border-radius: 3px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-decoration: none;
         }
 
-        .footer .visitor-counter {
-            background: #ffffff;
-            border-color: #d8dde4;
+        .contact-button:hover {
+            background: #7f1d2d;
+            color: #fff;
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 1.6em; }
-            .card { padding: 38px 0; }
-            header { padding: 48px 0 40px; }
-            .robot-container, .cat-container { display: none; }
-            .bunting { height: 40px; }
-            .container { padding: 0 20px 48px; }
-            .system-bar { font-size: 0.58rem; letter-spacing: 0.08em; }
-            .system-bar .optional-status { display: none; }
-            header { min-height: 0; }
-            h1 { font-size: clamp(2.35rem, 12vw, 3rem); }
-            .subtitle { font-size: 0.7rem; line-height: 1.7; }
-            .quote { font-size: 0.9rem; }
-            .card::before { display: none; }
-            .project-highlight { flex-direction: column; }
-            .topic-grid { grid-template-columns: 1fr; }
-            .topic-item { min-height: 0; }
-            .publication-controls { align-items: flex-start; flex-direction: column; }
-            .publication-grid { grid-template-columns: 1fr; }
-            .publication-card {
-                grid-template-columns: 1fr;
-                min-height: 0;
-                padding: 24px 0;
+        .site-footer {
+            padding: 34px 0 46px;
+            border-top: 1px solid var(--line-dark);
+            color: var(--ink-faint);
+            font-size: 0.72rem;
+            text-align: center;
+        }
+
+        .visitor-counter {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 4px;
+            border: 1px solid var(--line);
+            background: #fff;
+            opacity: 0.72;
+        }
+
+        .visitor-counter:hover {
+            opacity: 1;
+        }
+
+        .visitor-counter img {
+            display: block;
+            width: 112px;
+            height: auto;
+        }
+
+        .footer-note {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 820px) {
+            .nav-links {
+                gap: 14px;
             }
-            .paper-header {
-                grid-column: 1;
-                grid-row: auto;
-                flex-direction: row;
-                justify-content: space-between;
+
+            .nav-links li:nth-child(3),
+            .nav-links li:nth-child(4) {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 38px;
+                padding: 70px 0 62px;
+            }
+
+            .hero-aside {
+                max-width: 560px;
+            }
+
+            .fact-list {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                border-top: 1px solid var(--line);
+                border-bottom: 1px solid var(--line);
+            }
+
+            .fact,
+            .fact:first-child {
+                padding: 14px;
+                border-right: 1px solid var(--line);
+                border-bottom: 0;
+            }
+
+            .fact:last-child {
+                border-right: 0;
+            }
+
+            .topic-grid,
+            .experience-list,
+            .work-grid {
+                margin-left: 0;
+            }
+
+            .section-header {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .nav-inner,
+            .page {
+                width: min(100% - 32px, var(--content));
+            }
+
+            .site-nav {
+                position: static;
+            }
+
+            .nav-inner {
+                min-height: 58px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links li:nth-child(n+3) {
+                display: none;
+            }
+
+            h1 {
+                font-size: clamp(2.7rem, 15vw, 3.8rem);
+            }
+
+            .hero {
+                padding: 56px 0 48px;
+            }
+
+            .hero-role {
+                font-size: 1.03rem;
+            }
+
+            .profile-link {
+                flex: 1 1 calc(50% - 9px);
+                justify-content: center;
+            }
+
+            .fact-list {
+                grid-template-columns: 1fr;
+            }
+
+            .fact,
+            .fact:first-child {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .fact:last-child {
+                border-bottom: 0;
+            }
+
+            .section {
+                padding: 52px 0;
+            }
+
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topic {
+                min-height: 0;
+            }
+
+            .publication-heading-row {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .publication-controls {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .publication {
+                grid-template-columns: 1fr;
+                padding: 25px 0;
+            }
+
+            .publication-meta {
+                display: flex;
+                align-items: baseline;
+                gap: 10px;
                 margin: 0 0 12px;
                 padding: 0;
                 border-right: 0;
             }
-            .paper-topics,
-            .publication-card h3,
-            .paper-analysis,
-            .paper-insight {
-                grid-column: 1;
+
+            .publication-year {
+                margin: 0;
             }
-            .info-grid { border-bottom: 0; }
-            .info-item {
-                border-right: 0;
-                border-bottom: 1px solid var(--line);
+
+            .experience {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .contact-panel {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 24px;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                scroll-behavior: auto !important;
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-<div class="cyber-grid" aria-hidden="true"></div>
-
-<!-- Bunting / Party Flags -->
-<div class="bunting">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,8 Q300,2 600,8 Q900,14 1200,8" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none"/>
-        <polygon points="80,8 100,48 120,8" fill="#6c5ce7" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-3,100,8;3,100,8;-3,100,8" dur="4s" repeatCount="indefinite"/></polygon>
-        <polygon points="180,8 200,48 220,8" fill="#e84393" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="2,200,8;-2,200,8;2,200,8" dur="3.5s" repeatCount="indefinite"/></polygon>
-        <polygon points="280,8 300,48 320,8" fill="#00cec9" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-2,300,8;3,300,8;-2,300,8" dur="4.2s" repeatCount="indefinite"/></polygon>
-        <polygon points="380,8 400,48 420,8" fill="#fdcb6e" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="3,400,8;-2,400,8;3,400,8" dur="3.8s" repeatCount="indefinite"/></polygon>
-        <polygon points="480,8 500,48 520,8" fill="#55efc4" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-2,500,8;2,500,8;-2,500,8" dur="4.5s" repeatCount="indefinite"/></polygon>
-        <polygon points="580,8 600,48 620,8" fill="#a29bfe" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="2,600,8;-3,600,8;2,600,8" dur="3.6s" repeatCount="indefinite"/></polygon>
-        <polygon points="680,8 700,48 720,8" fill="#e84393" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-3,700,8;2,700,8;-3,700,8" dur="4.1s" repeatCount="indefinite"/></polygon>
-        <polygon points="780,8 800,48 820,8" fill="#6c5ce7" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="2,800,8;-2,800,8;2,800,8" dur="3.9s" repeatCount="indefinite"/></polygon>
-        <polygon points="880,8 900,48 920,8" fill="#fdcb6e" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-2,900,8;3,900,8;-2,900,8" dur="4.3s" repeatCount="indefinite"/></polygon>
-        <polygon points="980,8 1000,48 1020,8" fill="#00cec9" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="3,1000,8;-3,1000,8;3,1000,8" dur="3.7s" repeatCount="indefinite"/></polygon>
-        <polygon points="1080,8 1100,48 1120,8" fill="#55efc4" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="-2,1100,8;2,1100,8;-2,1100,8" dur="4.4s" repeatCount="indefinite"/></polygon>
-    </svg>
-</div>
-
-<div class="stars" id="stars"></div>
-
-<!-- Floating Cartoon Characters -->
-<div class="floating-chars" id="floatingChars"></div>
-
-<!-- Balloons -->
-<div class="balloon-wrap" style="left:5%; top:15%;">
-    <svg class="balloon" style="--dur:5s;--delay:0s" width="40" height="60" viewBox="0 0 40 60">
-        <ellipse cx="20" cy="22" rx="16" ry="20" fill="#e84393" opacity="0.5"/>
-        <ellipse cx="20" cy="22" rx="12" ry="16" fill="#e84393" opacity="0.3"/>
-        <ellipse cx="14" cy="16" rx="4" ry="5" fill="rgba(255,255,255,0.2)"/>
-        <line x1="20" y1="42" x2="20" y2="58" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    </svg>
-</div>
-<div class="balloon-wrap" style="right:8%; top:25%;">
-    <svg class="balloon" style="--dur:6s;--delay:1s" width="40" height="60" viewBox="0 0 40 60">
-        <ellipse cx="20" cy="22" rx="16" ry="20" fill="#6c5ce7" opacity="0.5"/>
-        <ellipse cx="20" cy="22" rx="12" ry="16" fill="#6c5ce7" opacity="0.3"/>
-        <ellipse cx="14" cy="16" rx="4" ry="5" fill="rgba(255,255,255,0.2)"/>
-        <line x1="20" y1="42" x2="20" y2="58" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    </svg>
-</div>
-<div class="balloon-wrap" style="left:12%; top:55%;">
-    <svg class="balloon" style="--dur:5.5s;--delay:2s" width="40" height="60" viewBox="0 0 40 60">
-        <ellipse cx="20" cy="22" rx="16" ry="20" fill="#00cec9" opacity="0.5"/>
-        <ellipse cx="20" cy="22" rx="12" ry="16" fill="#00cec9" opacity="0.3"/>
-        <ellipse cx="14" cy="16" rx="4" ry="5" fill="rgba(255,255,255,0.2)"/>
-        <line x1="20" y1="42" x2="20" y2="58" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    </svg>
-</div>
-<div class="balloon-wrap" style="right:6%; top:65%;">
-    <svg class="balloon" style="--dur:4.8s;--delay:0.5s" width="40" height="60" viewBox="0 0 40 60">
-        <ellipse cx="20" cy="22" rx="16" ry="20" fill="#fdcb6e" opacity="0.5"/>
-        <ellipse cx="20" cy="22" rx="12" ry="16" fill="#fdcb6e" opacity="0.3"/>
-        <ellipse cx="14" cy="16" rx="4" ry="5" fill="rgba(255,255,255,0.2)"/>
-        <line x1="20" y1="42" x2="20" y2="58" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    </svg>
-</div>
-
-<!-- Cute Robot Character -->
-<div class="robot-container" id="robot" title="Click me!">
-    <div class="speech-bubble">Welcome! Have a great day! 🎉</div>
-    <svg width="70" height="85" viewBox="0 0 70 85" xmlns="http://www.w3.org/2000/svg">
-        <line x1="35" y1="0" x2="35" y2="12" stroke="#a29bfe" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="35" cy="3" r="3" fill="#fdcb6e"/>
-        <rect x="12" y="12" width="46" height="38" rx="10" fill="#6c5ce7"/>
-        <rect x="18" y="20" width="14" height="10" rx="4" fill="#0f0f1a"/>
-        <rect x="38" y="20" width="14" height="10" rx="4" fill="#0f0f1a"/>
-        <circle cx="23" cy="25" r="3" fill="#55efc4"><animate attributeName="r" values="3;2;3" dur="2s" repeatCount="indefinite"/></circle>
-        <circle cx="43" cy="25" r="3" fill="#55efc4"><animate attributeName="r" values="3;2;3" dur="2s" repeatCount="indefinite"/></circle>
-        <path d="M 27 38 Q 35 44 43 38" stroke="#fdcb6e" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <rect x="22" y="54" width="26" height="20" rx="6" fill="#a29bfe"/>
-        <rect x="28" y="58" width="4" height="4" rx="1" fill="#fdcb6e"/>
-        <rect x="36" y="58" width="4" height="4" rx="1" fill="#55efc4"/>
-        <rect x="28" y="66" width="4" height="4" rx="1" fill="#e84393"/>
-        <rect x="36" y="66" width="4" height="4" rx="1" fill="#fdcb6e"/>
-        <rect x="4" y="22" width="8" height="18" rx="4" fill="#a29bfe"><animateTransform attributeName="transform" type="rotate" values="-5,8,22;5,8,22;-5,8,22" dur="3s" repeatCount="indefinite"/></rect>
-        <rect x="58" y="22" width="8" height="18" rx="4" fill="#a29bfe"><animateTransform attributeName="transform" type="rotate" values="5,62,22;-5,62,22;5,62,22" dur="3s" repeatCount="indefinite"/></rect>
-        <rect x="22" y="74" width="10" height="10" rx="4" fill="#6c5ce7"/>
-        <rect x="38" y="74" width="10" height="10" rx="4" fill="#6c5ce7"/>
-    </svg>
-</div>
-
-<!-- Cute Cat Character -->
-<div class="cat-container" id="cat" title="Meow!">
-    <div class="cat-bubble">Meow~ 🐱</div>
-    <svg width="65" height="70" viewBox="0 0 65 70" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="10,28 5,6 20,22" fill="#e84393"/>
-        <polygon points="55,28 60,6 45,22" fill="#e84393"/>
-        <polygon points="12,26 8,10 20,22" fill="#ff9ff3"/>
-        <polygon points="53,26 57,10 45,22" fill="#ff9ff3"/>
-        <ellipse cx="32" cy="38" rx="24" ry="22" fill="#e84393"/>
-        <ellipse cx="22" cy="34" rx="5" ry="5.5" fill="#0f0f1a"/>
-        <ellipse cx="42" cy="34" rx="5" ry="5.5" fill="#0f0f1a"/>
-        <ellipse cx="23" cy="33" r="2" fill="#fff"><animate attributeName="cx" values="23;21;23" dur="4s" repeatCount="indefinite"/></ellipse>
-        <ellipse cx="43" cy="33" r="2" fill="#fff"><animate attributeName="cx" values="43;41;43" dur="4s" repeatCount="indefinite"/></ellipse>
-        <ellipse cx="32" cy="40" rx="3" ry="2" fill="#ff9ff3"/>
-        <path d="M 29 42 Q 32 46 35 42" stroke="#0f0f1a" stroke-width="1.5" fill="none"/>
-        <ellipse cx="14" cy="40" rx="5" ry="4" fill="rgba(253,203,110,0.3)"/>
-        <ellipse cx="50" cy="40" rx="5" ry="4" fill="rgba(253,203,110,0.3)"/>
-        <line x1="2" y1="35" x2="14" y2="37" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-        <line x1="2" y1="40" x2="14" y2="40" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-        <line x1="2" y1="45" x2="14" y2="43" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-        <line x1="63" y1="35" x2="51" y2="37" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-        <line x1="63" y1="40" x2="51" y2="40" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-        <line x1="63" y1="45" x2="51" y2="43" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-        <path d="M 40 56 Q 45 62 50 56 Q 52 64 44 68 Q 36 64 38 56 Z" fill="#e84393"><animateTransform attributeName="transform" type="rotate" values="-5,44,62;5,44,62;-5,44,62" dur="2s" repeatCount="indefinite"/></path>
-    </svg>
-</div>
-
-<div class="container">
-    <div class="system-bar" aria-label="Research system status">
-        <span><span class="signal"></span><strong>Research Node Online</strong></span>
-        <span class="optional-status">Physical Intelligence // Shanghai // 2026</span>
-        <span>SYS.JH_01</span>
-    </div>
-
-    <header>
-        <div class="hero-kicker">Researching intelligence in motion</div>
-        <div class="avatar-ring">
-            <div class="inner">
-                <svg class="cyber-core" viewBox="0 0 76 76" role="img" aria-label="JH neural core">
-                    <g class="core-orbit" fill="none" stroke="currentColor" stroke-width="1.2">
-                        <circle cx="38" cy="38" r="29" stroke-dasharray="8 5"/>
-                        <path d="M38 5v8M38 63v8M5 38h8M63 38h8"/>
-                    </g>
-                    <g class="core-orbit-reverse" fill="none" stroke="#ff2e97" stroke-width="1.4">
-                        <rect x="19" y="19" width="38" height="38" transform="rotate(45 38 38)" stroke-dasharray="13 7"/>
-                    </g>
-                    <path d="M27 25v26M27 38h12M39 25v26M49 25v18c0 5-3 8-8 8" fill="none" stroke="#eafcff" stroke-width="3" stroke-linecap="square"/>
-                    <circle class="core-pulse" cx="38" cy="38" r="4" fill="#ffe66d"/>
-                </svg>
-            </div>
+    <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-inner">
+            <a class="site-name" href="#top">Jianhua Han</a>
+            <ul class="nav-links">
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#open-source">Open Source</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-        <h1>Hi, I'm Jianhua Han</h1>
-        <p class="subtitle">Research Scientist · Building the Future of Physical AI</p>
-        <div class="quote">"Intelligence can be defined as self-motivated skill-acquisition efficiency in the real world."</div>
-        <div class="badges">
-            <a class="badge" href="https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en" target="_blank">
-                <span class="icon">🎓</span> Google Scholar
-            </a>
-            <a class="badge" href="https://github.com/hanjianhua44" target="_blank">
-                <span class="icon">🐙</span> GitHub
-            </a>
-            <a class="badge" href="https://github.com/hanjianhua44/Awesome-VLA-Papers" target="_blank">
-                <span class="icon">📚</span> Awesome VLA Papers
-            </a>
-            <a class="badge" href="mailto:hanjianhua2012@gmail.com">
-                <span class="icon">✉️</span> hanjianhua2012@gmail.com
-            </a>
-        </div>
-    </header>
+    </nav>
 
-    <div class="card">
-        <div class="card-deco">🧑‍🔬</div>
-        <h2><span class="emoji">🚀</span> About Me</h2>
-        <p>Currently a <strong>Research Scientist</strong> at <strong>2030 Lab, Yinwang Intelligent Technology Co. Ltd</strong>. Previously at <strong>Huawei Noah's Ark Lab</strong>.</p>
-        <p>My research spans <strong>Multimodal Foundation Models</strong>, <strong>Robotics</strong>, <strong>Open-World Perception</strong>, <strong>Autonomous Driving</strong>, <strong>VLA Models</strong>, and <strong>World Models</strong> — turning visual understanding and reasoning into reliable physical-world decisions.</p>
-        <div class="info-grid">
-            <div class="info-item">
-                <span class="icon">📍</span>
-                <div><div class="label">Location</div><div class="value">Shanghai, China</div></div>
-            </div>
-            <div class="info-item">
-                <span class="icon">🎓</span>
-                <div><div class="label">Education</div><div class="value">M.S. & B.S. @ SJTU</div></div>
-            </div>
-            <div class="info-item">
-                <span class="icon">🔬</span>
-                <div><div class="label">Focus</div><div class="value">VLM · VLA · Robotics · World Models</div></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-deco">⌬</div>
-        <h2><span class="emoji">◈</span> Research Topics</h2>
-        <div class="topic-grid">
-            <article class="topic-item">
-                <span class="topic-id">TOPIC_01</span>
-                <h3>Multimodal Foundation Models</h3>
-                <p>Unified models that understand, reason, and generate across visual, linguistic, and embodied signals.</p>
-                <a class="topic-jump" href="#selected-publications" data-filter-link="foundation">View related papers →</a>
-            </article>
-            <article class="topic-item">
-                <span class="topic-id">TOPIC_02</span>
-                <h3>Vision-Language-Action</h3>
-                <p>Connecting perception and language with precise, generalizable actions in real-world environments.</p>
-                <a class="topic-jump" href="#selected-publications" data-filter-link="vla">View related papers →</a>
-            </article>
-            <article class="topic-item">
-                <span class="topic-id">TOPIC_03</span>
-                <h3>Robotics</h3>
-                <p>Building adaptable embodied agents that acquire skills and improve through interaction and experience.</p>
-                <a class="topic-jump" href="#selected-publications" data-filter-link="robotics">View related papers →</a>
-            </article>
-            <article class="topic-item">
-                <span class="topic-id">TOPIC_04</span>
-                <h3>Open-World Perception</h3>
-                <p>Scalable visual recognition beyond fixed vocabularies, distributions, and predefined scenarios.</p>
-                <a class="topic-jump" href="#selected-publications" data-filter-link="perception">View related papers →</a>
-            </article>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-deco">🗺️</div>
-        <h2><span class="emoji">🌟</span> Research & Open Source</h2>
-        <p>Alongside research, I maintain practical resources that help the community navigate fast-moving Physical AI literature.</p>
-        <div class="project-highlight">
-            <div class="project-icon">🤖</div>
+    <main class="page" id="main-content">
+        <header class="hero" id="top">
             <div>
-                <h3>Awesome VLA Papers</h3>
-                <p>A curated, continuously updated map of Vision-Language-Action research across autonomous driving, robotics, world models, and self-improving embodied agents.</p>
-                <a class="project-link" href="https://github.com/hanjianhua44/Awesome-VLA-Papers" target="_blank" rel="noopener noreferrer">Explore the paper map →</a>
+                <p class="eyebrow">Research Scientist · Physical AI</p>
+                <h1>Jianhua Han</h1>
+                <p class="hero-role">2030 Lab, Yinwang Intelligent Technology Co., Ltd.</p>
+                <p class="hero-lead">I study how multimodal foundation models can move beyond recognition toward grounded reasoning and reliable action, with a focus on vision-language-action models, robotics, and open-world perception.</p>
+                <blockquote class="thesis">“Intelligence can be defined as self-motivated skill-acquisition efficiency in the real world.”</blockquote>
+                <div class="profile-links" aria-label="Profile links">
+                    <a class="profile-link" href="https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+                    <a class="profile-link" href="https://github.com/hanjianhua44" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    <a class="profile-link" href="https://github.com/hanjianhua44/Awesome-VLA-Papers" target="_blank" rel="noopener noreferrer">Awesome VLA Papers ↗</a>
+                    <a class="profile-link" href="mailto:hanjianhua2012@gmail.com">Email</a>
+                </div>
             </div>
-        </div>
-    </div>
+            <aside class="hero-aside" aria-label="Profile facts">
+                <dl class="fact-list">
+                    <div class="fact">
+                        <dt>Location</dt>
+                        <dd>Shanghai, China</dd>
+                    </div>
+                    <div class="fact">
+                        <dt>Education</dt>
+                        <dd>M.S. &amp; B.S.<br>Shanghai Jiao Tong University</dd>
+                    </div>
+                    <div class="fact">
+                        <dt>Current focus</dt>
+                        <dd>VLM · VLA · Robotics<br>Open-World Perception</dd>
+                    </div>
+                </dl>
+            </aside>
+        </header>
 
-    <div class="card hiring-card">
-        <div class="card-deco">🎊</div>
-        <h2><span class="emoji">📢</span> Join Us!</h2>
-        <p>We are actively looking for self-motivated <strong>Interns</strong> and <strong>Full-time Researchers/Engineers</strong> at <strong>2030 Lab, Yinwang</strong>.</p>
-        <ul>
-            <li><strong>Focus Areas:</strong> VLM, Physical AI, VLA, World Models, End-to-End Autonomous Driving, and General-purpose Agents.</li>
-            <li>Interested in building the next generation of intelligent systems? Reach out at <a href="mailto:hanjianhua2012@gmail.com">hanjianhua2012@gmail.com</a> 🎉</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <div class="card-deco">⚡</div>
-        <h2><span class="emoji">🛠</span> Experience</h2>
-        <div class="timeline-item">
-            <h3>Research Scientist @ 2030 Lab, Yinwang (2025 – Present)</h3>
-            <ul>
-                <li>Constructing research on <strong>VLM</strong>, <strong>VLA</strong> models and <strong>World Models</strong> for <strong>Physical AI</strong>.</li>
-                <li>Focusing on visual understanding, reasoning, and decision-making in complex open-world environments (AD & Robotics).</li>
-            </ul>
-        </div>
-        <div class="timeline-item">
-            <h3>Research Scientist @ Huawei Noah's Ark Lab (2019 – 2025)</h3>
-            <ul>
-                <li><strong>Foundation Models:</strong> Led the development of <strong>Large-scale Multi-modal Foundation Models</strong> (30B+ parameters).</li>
-                <li>Model architecture design, pre-training strategies, and data optimization — achieving superior results on MME, DocVQA, and MathVista.</li>
-                <li><strong>Open-Vocabulary Perception:</strong> Developed the <strong>DetCLIP</strong> series, achieving <strong>No.1</strong> on COCO, Waymo 2D, and LVIS leaderboards.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="card" id="selected-publications">
-        <div class="card-deco">📚</div>
-        <h2><span class="emoji">📝</span> Selected Publications</h2>
-        <p class="publication-intro">A topic-aligned view of my work, from open-world visual grounding to models that predict, reason, and act. Each selection highlights the technical idea and the broader research signal behind it.</p>
-
-        <div class="publication-controls">
-            <div class="publication-filters" role="group" aria-label="Filter publications by research topic">
-                <button class="publication-filter" type="button" data-filter="all" aria-pressed="true">All</button>
-                <button class="publication-filter" type="button" data-filter="foundation" aria-pressed="false">Multimodal</button>
-                <button class="publication-filter" type="button" data-filter="vla" aria-pressed="false">VLA</button>
-                <button class="publication-filter" type="button" data-filter="world" aria-pressed="false">World Models</button>
-                <button class="publication-filter" type="button" data-filter="robotics" aria-pressed="false">Robotics</button>
-                <button class="publication-filter" type="button" data-filter="driving" aria-pressed="false">Driving</button>
-                <button class="publication-filter" type="button" data-filter="perception" aria-pressed="false">Open-World</button>
+        <section class="section" id="research" aria-labelledby="research-title">
+            <div class="section-header">
+                <div class="section-kicker">Research</div>
+                <div class="section-title">
+                    <h2 id="research-title">From perception to physical intelligence</h2>
+                    <p>My work connects four complementary research directions, moving from broad visual understanding to agents that can acquire skills and act in complex environments.</p>
+                </div>
             </div>
-            <div class="publication-count" aria-live="polite"><span id="publicationCount">13</span> signals online</div>
-        </div>
+            <div class="topic-grid">
+                <article class="topic">
+                    <span class="topic-number">01 / Foundation</span>
+                    <h3>Multimodal Foundation Models</h3>
+                    <p>Unified models that understand, reason, and generate across visual, linguistic, acoustic, and embodied signals.</p>
+                    <a href="#publications" data-filter-link="foundation">Explore selected work →</a>
+                </article>
+                <article class="topic">
+                    <span class="topic-number">02 / Action</span>
+                    <h3>Vision-Language-Action</h3>
+                    <p>Connecting visual grounding and language-level reasoning with precise, generalizable actions in the physical world.</p>
+                    <a href="#publications" data-filter-link="vla">Explore selected work →</a>
+                </article>
+                <article class="topic">
+                    <span class="topic-number">03 / Embodiment</span>
+                    <h3>Robotics</h3>
+                    <p>Building adaptable embodied agents that compose reusable skills and improve through interaction and experience.</p>
+                    <a href="#publications" data-filter-link="robotics">Explore selected work →</a>
+                </article>
+                <article class="topic">
+                    <span class="topic-number">04 / Perception</span>
+                    <h3>Open-World Perception</h3>
+                    <p>Scalable visual recognition and spatial grounding beyond fixed vocabularies, distributions, and predefined scenarios.</p>
+                    <a href="#publications" data-filter-link="perception">Explore selected work →</a>
+                </article>
+            </div>
+        </section>
 
-        <div class="publication-grid">
-            <article class="publication-card" data-topics="vla driving perception">
-                <div class="paper-header"><span class="paper-index">PAPER_01</span><span class="paper-venue">CVPR 2026</span></div>
-                <div class="paper-topics"><span class="paper-topic">VLA</span><span class="paper-topic">Driving</span><span class="paper-topic">Open-World</span></div>
-                <h3><a href="https://arxiv.org/abs/2511.19221" target="_blank" rel="noopener noreferrer">Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving ↗</a></h3>
-                <p class="paper-analysis">Unifies 2D perspective-view and 3D bird's-eye-view perception as world tokens inside one VLM, then connects those representations directly to trajectory prediction.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Spatial grounding and action planning can share a foundation-model backbone without reducing perception to text-only reasoning.</div>
-            </article>
+        <section class="section" id="publications" aria-labelledby="publications-title">
+            <div class="section-header">
+                <div class="section-kicker">Selected work</div>
+                <div class="section-title">
+                    <div class="publication-heading-row">
+                        <h2 id="publications-title">Publications</h2>
+                        <a class="scholar-link" href="https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Complete list on Google Scholar ↗</a>
+                    </div>
+                    <p>A curated path through my research. Each entry summarizes both the technical contribution and the broader idea it advances.</p>
+                </div>
+            </div>
 
-            <article class="publication-card" data-topics="vla robotics">
-                <div class="paper-header"><span class="paper-index">PAPER_02</span><span class="paper-venue">CVPR 2026</span></div>
-                <div class="paper-topics"><span class="paper-topic">VLA</span><span class="paper-topic">Robotics</span></div>
-                <h3><a href="https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_AtomicVLA_Unlocking_the_Potential_of_Atomic_Skill_Learning_in_Robots_CVPR_2026_paper.html" target="_blank" rel="noopener noreferrer">AtomicVLA: Unlocking the Potential of Atomic Skill Learning in Robots ↗</a></h3>
-                <p class="paper-analysis">Jointly generates plans, atomic skill abstractions, and low-level actions, using a skill-guided mixture of experts to compose specialized capabilities.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Modular skill routing offers a practical path from monolithic policies toward continual and long-horizon robot learning.</div>
-            </article>
+            <div class="publication-controls">
+                <div class="publication-filters" role="group" aria-label="Filter publications by research topic">
+                    <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button>
+                    <button class="filter-button" type="button" data-filter="foundation" aria-pressed="false">Multimodal</button>
+                    <button class="filter-button" type="button" data-filter="vla" aria-pressed="false">VLA</button>
+                    <button class="filter-button" type="button" data-filter="robotics" aria-pressed="false">Robotics</button>
+                    <button class="filter-button" type="button" data-filter="perception" aria-pressed="false">Open-World</button>
+                </div>
+                <div class="publication-count" aria-live="polite"><span id="publicationCount">13</span> selected papers</div>
+            </div>
 
-            <article class="publication-card" data-topics="world driving">
-                <div class="paper-header"><span class="paper-index">PAPER_03</span><span class="paper-venue">arXiv 2026</span></div>
-                <div class="paper-topics"><span class="paper-topic">World Models</span><span class="paper-topic">Driving</span></div>
-                <h3><a href="https://arxiv.org/abs/2608.10107" target="_blank" rel="noopener noreferrer">4D-WAM: 4D Consistent World Modeling for Autonomous Driving ↗</a></h3>
-                <p class="paper-analysis">Uses geometric foundation models as training-time supervisors so predicted driving futures preserve 4D structure, with no additional inference cost.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Visually plausible futures are not enough; physically grounded supervision matters most where driving decisions begin to form.</div>
-            </article>
+            <div class="publication-list">
+                <article class="publication" data-topics="vla perception">
+                    <div class="publication-meta"><span class="publication-year">2026</span><span class="publication-venue">CVPR</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">VLA</span><span class="publication-tag">Open-World</span></div>
+                        <h3><a href="https://arxiv.org/abs/2511.19221" target="_blank" rel="noopener noreferrer">Percept-WAM: Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving ↗</a></h3>
+                        <p class="publication-summary">Unifies 2D perspective-view and 3D bird's-eye-view perception as world tokens inside one VLM, then connects those representations directly to trajectory prediction.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Spatial grounding and action planning can share a foundation-model backbone without reducing perception to text-only reasoning.</p>
+                    </div>
+                </article>
 
-            <article class="publication-card" data-topics="world driving">
-                <div class="paper-header"><span class="paper-index">PAPER_04</span><span class="paper-venue">arXiv 2026</span></div>
-                <div class="paper-topics"><span class="paper-topic">World Models</span><span class="paper-topic">Driving</span></div>
-                <h3><a href="https://arxiv.org/abs/2608.03084" target="_blank" rel="noopener noreferrer">SUV: Future Scene Understanding as Video Generation for End-to-End Driving ↗</a></h3>
-                <p class="paper-analysis">A shared video expert predicts future RGB, semantics, relative depth, and instance dynamics while an action expert reads their latent tokens to plan trajectories.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Generative future prediction can become a common interface between structured scene understanding and end-to-end control.</div>
-            </article>
+                <article class="publication" data-topics="vla robotics">
+                    <div class="publication-meta"><span class="publication-year">2026</span><span class="publication-venue">CVPR</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">VLA</span><span class="publication-tag">Robotics</span></div>
+                        <h3><a href="https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_AtomicVLA_Unlocking_the_Potential_of_Atomic_Skill_Learning_in_Robots_CVPR_2026_paper.html" target="_blank" rel="noopener noreferrer">AtomicVLA: Unlocking the Potential of Atomic Skill Learning in Robots ↗</a></h3>
+                        <p class="publication-summary">Jointly generates plans, atomic skill abstractions, and low-level actions, using a skill-guided mixture of experts to compose specialized capabilities.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Modular skill routing offers a practical path from monolithic policies toward continual and long-horizon robot learning.</p>
+                    </div>
+                </article>
 
-            <article class="publication-card" data-topics="vla driving">
-                <div class="paper-header"><span class="paper-index">PAPER_05</span><span class="paper-venue">arXiv 2026</span></div>
-                <div class="paper-topics"><span class="paper-topic">VLA</span><span class="paper-topic">Driving</span></div>
-                <h3><a href="https://arxiv.org/abs/2608.01035" target="_blank" rel="noopener noreferrer">WAM-Diff2: Hierarchical AR-to-Diffusion Distillation for Highly Efficient Autonomous Driving VLA ↗</a></h3>
-                <p class="paper-analysis">Transfers an autoregressive driving generalist into a parallel discrete-diffusion model through hierarchical distillation and block-causal attention.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Generation-paradigm conversion can reduce VLA latency while retaining understanding, perception, and planning capabilities.</div>
-            </article>
+                <article class="publication" data-topics="vla">
+                    <div class="publication-meta"><span class="publication-year">2026</span><span class="publication-venue">arXiv</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">VLA</span><span class="publication-tag">World Model</span></div>
+                        <h3><a href="https://arxiv.org/abs/2608.10107" target="_blank" rel="noopener noreferrer">4D-WAM: 4D Consistent World Modeling for Autonomous Driving ↗</a></h3>
+                        <p class="publication-summary">Uses geometric foundation models as training-time supervisors so predicted driving futures preserve 4D structure, with no additional inference cost.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Visually plausible futures are not enough; physically grounded supervision matters where decisions begin to form.</p>
+                    </div>
+                </article>
 
-            <article class="publication-card" data-topics="foundation">
-                <div class="paper-header"><span class="paper-index">PAPER_06</span><span class="paper-venue">ICCV 2025</span></div>
-                <div class="paper-topics"><span class="paper-topic">Multimodal</span></div>
-                <h3><a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Wang_ILLUME_Illuminating_Your_LLMs_to_See_Draw_and_Self-Enhance_ICCV_2025_paper.pdf" target="_blank" rel="noopener noreferrer">ILLUME: Illuminating Your LLMs to See, Draw, and Self-Enhance ↗</a></h3>
-                <p class="paper-analysis">Builds a unified multimodal model around visual understanding and generation, then uses generated visual data to iteratively improve its own capabilities.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Understanding and generation are complementary learning signals rather than separate endpoints.</div>
-            </article>
+                <article class="publication" data-topics="vla">
+                    <div class="publication-meta"><span class="publication-year">2026</span><span class="publication-venue">arXiv</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">VLA</span><span class="publication-tag">World Model</span></div>
+                        <h3><a href="https://arxiv.org/abs/2608.03084" target="_blank" rel="noopener noreferrer">SUV: Future Scene Understanding as Video Generation for End-to-End Driving ↗</a></h3>
+                        <p class="publication-summary">A shared video expert predicts future RGB, semantics, relative depth, and instance dynamics while an action expert reads their latent tokens to plan trajectories.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Generative future prediction can become a common interface between structured scene understanding and control.</p>
+                    </div>
+                </article>
 
-            <article class="publication-card" data-topics="foundation">
-                <div class="paper-header"><span class="paper-index">PAPER_07</span><span class="paper-venue">CVPR 2025</span></div>
-                <div class="paper-topics"><span class="paper-topic">Multimodal</span></div>
-                <h3><a href="https://arxiv.org/abs/2409.18042" target="_blank" rel="noopener noreferrer">EMOVA: Empowering Language Models to See, Hear and Speak with Vivid Emotions ↗</a></h3>
-                <p class="paper-analysis">Aligns vision, text, and speech end to end with a semantic-acoustic disentangled tokenizer and lightweight controls for expressive speech styles.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Careful tokenization can align additional modalities without requiring scarce fully paired multimodal data.</div>
-            </article>
+                <article class="publication" data-topics="vla">
+                    <div class="publication-meta"><span class="publication-year">2026</span><span class="publication-venue">arXiv</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">VLA</span><span class="publication-tag">Efficient Inference</span></div>
+                        <h3><a href="https://arxiv.org/abs/2608.01035" target="_blank" rel="noopener noreferrer">WAM-Diff2: Hierarchical AR-to-Diffusion Distillation for Highly Efficient Autonomous Driving VLA ↗</a></h3>
+                        <p class="publication-summary">Transfers an autoregressive driving generalist into a parallel discrete-diffusion model through hierarchical distillation and block-causal attention.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Generation-paradigm conversion can reduce VLA latency while retaining perception, reasoning, and planning capabilities.</p>
+                    </div>
+                </article>
 
-            <article class="publication-card" data-topics="foundation driving">
-                <div class="paper-header"><span class="paper-index">PAPER_08</span><span class="paper-venue">ECCV 2024</span></div>
-                <div class="paper-topics"><span class="paper-topic">Multimodal</span><span class="paper-topic">Driving</span></div>
-                <h3><a href="https://arxiv.org/abs/2312.03661" target="_blank" rel="noopener noreferrer">Reason2Drive: Towards Interpretable and Chain-Based Reasoning for Autonomous Driving ↗</a></h3>
-                <p class="paper-analysis">Introduces a large video-text benchmark that decomposes driving decisions into perception, prediction, and reasoning chains, plus an evaluation metric for those chains.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Interpretable driving requires evaluating the decision process, not only the final answer or trajectory.</div>
-            </article>
+                <article class="publication" data-topics="foundation">
+                    <div class="publication-meta"><span class="publication-year">2025</span><span class="publication-venue">ICCV</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">Multimodal</span><span class="publication-tag">Generation</span></div>
+                        <h3><a href="https://openaccess.thecvf.com/content/ICCV2025/html/Wang_ILLUME_Illuminating_Your_LLMs_to_See_Draw_and_Self-Enhance_ICCV_2025_paper.html" target="_blank" rel="noopener noreferrer">ILLUME: Illuminating Your LLMs to See, Draw, and Self-Enhance ↗</a></h3>
+                        <p class="publication-summary">Builds a unified multimodal model around visual understanding and generation, then uses generated visual data to iteratively improve its own capabilities.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Understanding and generation are complementary learning signals rather than separate endpoints.</p>
+                    </div>
+                </article>
 
-            <article class="publication-card" data-topics="foundation driving">
-                <div class="paper-header"><span class="paper-index">PAPER_09</span><span class="paper-venue">IJCV 2025</span></div>
-                <div class="paper-topics"><span class="paper-topic">Multimodal</span><span class="paper-topic">Driving</span></div>
-                <h3><a href="https://arxiv.org/abs/2309.05186" target="_blank" rel="noopener noreferrer">HiLM-D: Enhancing MLLMs with Multi-Scale High-Resolution Details for Autonomous Driving ↗</a></h3>
-                <p class="paper-analysis">Combines low-resolution temporal reasoning with a high-resolution spatial stream and a lightweight adapter for fine-grained risk-object understanding.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Efficient multimodal systems should allocate visual resolution according to temporal and spatial information needs.</div>
-            </article>
+                <article class="publication" data-topics="foundation">
+                    <div class="publication-meta"><span class="publication-year">2025</span><span class="publication-venue">CVPR</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">Multimodal</span><span class="publication-tag">Speech</span></div>
+                        <h3><a href="https://openaccess.thecvf.com/content/CVPR2025/html/Chen_EMOVA_Empowering_Language_Models_to_See_Hear_and_Speak_with_CVPR_2025_paper.html" target="_blank" rel="noopener noreferrer">EMOVA: Empowering Language Models to See, Hear and Speak with Vivid Emotions ↗</a></h3>
+                        <p class="publication-summary">Aligns vision, text, and speech end to end with a semantic-acoustic disentangled tokenizer and lightweight controls for expressive speech styles.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Careful tokenization can align additional modalities without requiring scarce fully paired multimodal data.</p>
+                    </div>
+                </article>
 
-            <article class="publication-card" data-topics="robotics world">
-                <div class="paper-header"><span class="paper-index">PAPER_10</span><span class="paper-venue">TPAMI 2025</span></div>
-                <div class="paper-topics"><span class="paper-topic">Robotics</span><span class="paper-topic">World Models</span></div>
-                <h3><a href="https://arxiv.org/abs/2403.07376" target="_blank" rel="noopener noreferrer">NavCoT: Boosting LLM-Based Vision-and-Language Navigation via Learning Disentangled Reasoning ↗</a></h3>
-                <p class="paper-analysis">Structures navigation reasoning into future imagination, visual observation matching, and action prediction, then learns the process with parameter-efficient tuning.</p>
-                <div class="paper-insight"><strong>Research signal</strong>An embodied agent can use an LLM as both a lightweight world model and an interpretable decision module.</div>
-            </article>
+                <article class="publication" data-topics="foundation">
+                    <div class="publication-meta"><span class="publication-year">2024</span><span class="publication-venue">ECCV</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">Multimodal</span><span class="publication-tag">Reasoning</span></div>
+                        <h3><a href="https://arxiv.org/abs/2312.03661" target="_blank" rel="noopener noreferrer">Reason2Drive: Towards Interpretable and Chain-Based Reasoning for Autonomous Driving ↗</a></h3>
+                        <p class="publication-summary">Introduces a large video-text benchmark that decomposes driving decisions into perception, prediction, and reasoning chains, plus an evaluation metric for those chains.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Interpretable driving requires evaluating the decision process, not only the final answer or trajectory.</p>
+                    </div>
+                </article>
 
-            <article class="publication-card" data-topics="perception foundation">
-                <div class="paper-header"><span class="paper-index">PAPER_11</span><span class="paper-venue">NeurIPS 2022</span></div>
-                <div class="paper-topics"><span class="paper-topic">Open-World</span><span class="paper-topic">Multimodal</span></div>
-                <h3><a href="https://arxiv.org/abs/2209.09407" target="_blank" rel="noopener noreferrer">DetCLIP: Dictionary-Enriched Visual-Concept Paralleled Pre-Training for Open-World Detection ↗</a></h3>
-                <p class="paper-analysis">Reformulates heterogeneous detection data into parallel visual-concept learning and enriches category supervision with a concept dictionary.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Language knowledge can expand a detector beyond the closed label set while keeping pre-training efficient.</div>
-            </article>
+                <article class="publication" data-topics="foundation perception">
+                    <div class="publication-meta"><span class="publication-year">2025</span><span class="publication-venue">IJCV</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">Multimodal</span><span class="publication-tag">Open-World</span></div>
+                        <h3><a href="https://link.springer.com/article/10.1007/s11263-025-02433-3" target="_blank" rel="noopener noreferrer">HiLM-D: Enhancing MLLMs with Multi-Scale High-Resolution Details for Autonomous Driving ↗</a></h3>
+                        <p class="publication-summary">Combines low-resolution temporal reasoning with a high-resolution spatial stream and a lightweight adapter for fine-grained risk-object understanding.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Efficient multimodal systems should allocate visual resolution according to temporal and spatial information needs.</p>
+                    </div>
+                </article>
 
-            <article class="publication-card" data-topics="perception foundation">
-                <div class="paper-header"><span class="paper-index">PAPER_12</span><span class="paper-venue">CVPR 2023</span></div>
-                <div class="paper-topics"><span class="paper-topic">Open-World</span><span class="paper-topic">Multimodal</span></div>
-                <h3><a href="https://arxiv.org/abs/2304.04514" target="_blank" rel="noopener noreferrer">DetCLIPv2: Scalable Open-Vocabulary Object Detection Pre-Training via Word-Region Alignment ↗</a></h3>
-                <p class="paper-analysis">Learns direct word-region alignment from large-scale image-text pairs under unified detection, grounding, and caption supervision.</p>
-                <div class="paper-insight"><strong>Research signal</strong>Fine-grained alignment makes web-scale image-text data useful for localization without expensive pseudo-label pipelines.</div>
-            </article>
+                <article class="publication" data-topics="vla robotics">
+                    <div class="publication-meta"><span class="publication-year">2025</span><span class="publication-venue">TPAMI</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">VLA</span><span class="publication-tag">Robotics</span></div>
+                        <h3><a href="https://arxiv.org/abs/2403.07376" target="_blank" rel="noopener noreferrer">NavCoT: Boosting LLM-Based Vision-and-Language Navigation via Learning Disentangled Reasoning ↗</a></h3>
+                        <p class="publication-summary">Structures navigation reasoning into future imagination, visual observation matching, and action prediction, then learns the process with parameter-efficient tuning.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> An embodied agent can use an LLM as both a lightweight predictive model and an interpretable decision module.</p>
+                    </div>
+                </article>
 
-            <article class="publication-card" data-topics="perception foundation">
-                <div class="paper-header"><span class="paper-index">PAPER_13</span><span class="paper-venue">CVPR 2024</span></div>
-                <div class="paper-topics"><span class="paper-topic">Open-World</span><span class="paper-topic">Multimodal</span></div>
-                <h3><a href="https://arxiv.org/abs/2404.09216" target="_blank" rel="noopener noreferrer">DetCLIPv3: Towards Versatile Generative Open-Vocabulary Object Detection ↗</a></h3>
-                <p class="paper-analysis">Adds object-level caption generation and hierarchical concept labels to open-vocabulary detection, bridging localization and dense description.</p>
-                <div class="paper-insight"><strong>Research signal</strong>A detector becomes more versatile when recognition and object-centric generation reinforce each other.</div>
-            </article>
-        </div>
-    </div>
+                <article class="publication" data-topics="foundation perception">
+                    <div class="publication-meta"><span class="publication-year">2022</span><span class="publication-venue">NeurIPS</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">Open-World</span><span class="publication-tag">Multimodal</span></div>
+                        <h3><a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/3ba960559212691be13fa81d9e5e0047-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">DetCLIP: Dictionary-Enriched Visual-Concept Paralleled Pre-Training for Open-World Detection ↗</a></h3>
+                        <p class="publication-summary">Reformulates heterogeneous detection data into parallel visual-concept learning and enriches category supervision with a concept dictionary.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Language knowledge can expand a detector beyond the closed label set while keeping pre-training efficient.</p>
+                    </div>
+                </article>
 
-    <div class="footer">
-        <div class="footer-chars">⌬ ◈ ⟡</div>
-        <a class="visitor-counter" href="https://info.flagcounter.com/R4Aj" target="_blank" rel="noopener noreferrer" aria-label="View detailed visitor statistics">
-            <img src="https://s01.flagcounter.com/count2/R4Aj/bg_1A1A2E/txt_E2E2E2/border_6C5CE7/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Visitor count and countries" loading="lazy">
+                <article class="publication" data-topics="foundation perception">
+                    <div class="publication-meta"><span class="publication-year">2023</span><span class="publication-venue">CVPR</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">Open-World</span><span class="publication-tag">Multimodal</span></div>
+                        <h3><a href="https://openaccess.thecvf.com/content/CVPR2023/html/Yao_DetCLIPv2_Scalable_Open-Vocabulary_Object_Detection_Pre-Training_via_Word-Region_Alignment_CVPR_2023_paper.html" target="_blank" rel="noopener noreferrer">DetCLIPv2: Scalable Open-Vocabulary Object Detection Pre-Training via Word-Region Alignment ↗</a></h3>
+                        <p class="publication-summary">Learns direct word-region alignment from large-scale image-text pairs under unified detection, grounding, and caption supervision.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> Fine-grained alignment makes web-scale image-text data useful for localization without expensive pseudo-label pipelines.</p>
+                    </div>
+                </article>
+
+                <article class="publication" data-topics="foundation perception">
+                    <div class="publication-meta"><span class="publication-year">2024</span><span class="publication-venue">CVPR</span></div>
+                    <div>
+                        <div class="publication-tags"><span class="publication-tag">Open-World</span><span class="publication-tag">Multimodal</span></div>
+                        <h3><a href="https://openaccess.thecvf.com/content/CVPR2024/html/Yao_DetCLIPv3_Towards_Versatile_Generative_Open-vocabulary_Object_Detection_CVPR_2024_paper.html" target="_blank" rel="noopener noreferrer">DetCLIPv3: Towards Versatile Generative Open-Vocabulary Object Detection ↗</a></h3>
+                        <p class="publication-summary">Adds object-level caption generation and hierarchical concept labels to open-vocabulary detection, bridging localization and dense description.</p>
+                        <p class="publication-insight"><strong>Why it matters.</strong> A detector becomes more versatile when recognition and object-centric generation reinforce each other.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="experience" aria-labelledby="experience-title">
+            <div class="section-header">
+                <div class="section-kicker">Experience</div>
+                <div class="section-title">
+                    <h2 id="experience-title">Research journey</h2>
+                    <p>Building multimodal systems across foundation-model research and real-world physical intelligence.</p>
+                </div>
+            </div>
+            <div class="experience-list">
+                <article class="experience">
+                    <div class="experience-period">2025 — Present</div>
+                    <div>
+                        <h3>Research Scientist</h3>
+                        <div class="experience-org">2030 Lab · Yinwang Intelligent Technology Co., Ltd.</div>
+                        <p>Researching multimodal foundation models, vision-language-action systems, robotics, and open-world decision-making for Physical AI.</p>
+                    </div>
+                </article>
+                <article class="experience">
+                    <div class="experience-period">2019 — 2025</div>
+                    <div>
+                        <h3>Research Scientist</h3>
+                        <div class="experience-org">Huawei Noah's Ark Lab</div>
+                        <p>Worked on large-scale multimodal foundation models and open-vocabulary perception, including model architecture, pre-training, data optimization, and the DetCLIP series.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="open-source" aria-labelledby="open-source-title">
+            <div class="section-header">
+                <div class="section-kicker">Community</div>
+                <div class="section-title">
+                    <h2 id="open-source-title">Research resources</h2>
+                    <p>I maintain practical resources that help researchers navigate fast-moving work in embodied and physical intelligence.</p>
+                </div>
+            </div>
+            <div class="work-grid">
+                <article class="work-card">
+                    <span class="work-label">Open-source literature map</span>
+                    <h3>Awesome VLA Papers</h3>
+                    <p>A curated and continuously updated map of Vision-Language-Action research across robotics, autonomous systems, world models, and self-improving embodied agents.</p>
+                    <a href="https://github.com/hanjianhua44/Awesome-VLA-Papers" target="_blank" rel="noopener noreferrer">Explore the repository →</a>
+                </article>
+                <article class="work-card">
+                    <span class="work-label">Research profile</span>
+                    <h3>Google Scholar</h3>
+                    <p>Browse the complete publication record, citation history, and latest research updates.</p>
+                    <a href="https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">View all publications →</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact" aria-labelledby="contact-title">
+            <div class="section-kicker">Collaborate</div>
+            <div class="contact-panel">
+                <div>
+                    <h2 id="contact-title">Interested in working together?</h2>
+                    <p>We welcome self-motivated interns and full-time researchers or engineers interested in multimodal foundation models, VLA, robotics, and Physical AI.</p>
+                </div>
+                <a class="contact-button" href="mailto:hanjianhua2012@gmail.com">Get in touch</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="visitor-counter" href="https://info.flagcounter.com/R4Aj" target="_blank" rel="noopener noreferrer" aria-label="View aggregate visitor statistics">
+            <img src="https://s01.flagcounter.com/count2/R4Aj/bg_FFFFFF/txt_536071/border_DFE3E8/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Visitor count and countries" loading="lazy">
         </a>
-        <div class="visitor-note">Global visitor signal</div>
-        <p>Made with ☕ and curiosity · © 2026 Jianhua Han</p>
-    </div>
-</div>
+        <p class="footer-note">© 2026 Jianhua Han · Researching intelligence in the real world.</p>
+    </footer>
 
-<script>
-(function() {
-    var stars = document.getElementById('stars');
-    for (var i = 0; i < 80; i++) {
-        var star = document.createElement('div');
-        star.className = 'star';
-        var size = Math.random() * 3 + 1;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-        star.style.animationDelay = Math.random() * 5 + 's';
-        stars.appendChild(star);
-    }
-})();
+    <script>
+    (function() {
+        var buttons = Array.prototype.slice.call(document.querySelectorAll('.filter-button'));
+        var publications = Array.prototype.slice.call(document.querySelectorAll('.publication'));
+        var count = document.getElementById('publicationCount');
 
-(function() {
-    var chars = ['🎈','🎁','🌸','⭐','🎀','🍭','🧸','🎶','✨','💫','🪅','🎪'];
-    var container = document.getElementById('floatingChars');
-    for (var i = 0; i < 12; i++) {
-        var el = document.createElement('div');
-        el.className = 'float-char';
-        el.textContent = chars[i % chars.length];
-        el.style.left = (5 + Math.random() * 90) + '%';
-        el.style.top = (5 + Math.random() * 85) + '%';
-        el.style.setProperty('--dur', (4 + Math.random() * 4) + 's');
-        el.style.setProperty('--delay', (Math.random() * 5) + 's');
-        el.style.fontSize = (1.2 + Math.random() * 1.2) + 'em';
-        container.appendChild(el);
-    }
-})();
+        function applyFilter(filter) {
+            var visible = 0;
 
-var robotMessages = ['SYSTEM ONLINE', 'Neural link stable', 'Exploring the unknown', 'Signal acquired', "Let's build intelligence", 'Welcome, researcher'];
-var robot = document.getElementById('robot');
-robot.addEventListener('click', function() {
-    var bubble = robot.querySelector('.speech-bubble');
-    bubble.textContent = robotMessages[Math.floor(Math.random() * robotMessages.length)];
-    bubble.style.opacity = '1';
-    bubble.style.transform = 'translateX(-110%) scale(1)';
-    setTimeout(function() {
-        bubble.style.opacity = '0';
-        bubble.style.transform = 'translateX(-110%) scale(0.8)';
-    }, 2000);
-});
+            buttons.forEach(function(button) {
+                button.setAttribute('aria-pressed', button.dataset.filter === filter ? 'true' : 'false');
+            });
 
-var catMessages = ['Meow~ 🐱', 'Purrrr~', 'System cat online', 'Nya~ ❤️', 'Fish protocol ready', 'Zzz... 💤'];
-var cat = document.getElementById('cat');
-cat.addEventListener('click', function() {
-    var bubble = cat.querySelector('.cat-bubble');
-    bubble.textContent = catMessages[Math.floor(Math.random() * catMessages.length)];
-    bubble.style.opacity = '1';
-    bubble.style.transform = 'translateX(110%) scale(1)';
-    setTimeout(function() {
-        bubble.style.opacity = '0';
-        bubble.style.transform = 'translateX(110%) scale(0.8)';
-    }, 2000);
-});
+            publications.forEach(function(publication) {
+                var topics = publication.dataset.topics.split(' ');
+                var show = filter === 'all' || topics.indexOf(filter) !== -1;
+                publication.hidden = !show;
+                if (show) visible++;
+            });
 
-var publicationButtons = Array.prototype.slice.call(document.querySelectorAll('.publication-filter'));
-var publicationCards = Array.prototype.slice.call(document.querySelectorAll('.publication-card'));
-var publicationCount = document.getElementById('publicationCount');
+            count.textContent = visible;
+        }
 
-function setPublicationFilter(filter) {
-    var visibleCount = 0;
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                applyFilter(button.dataset.filter);
+            });
+        });
 
-    publicationButtons.forEach(function(button) {
-        button.setAttribute('aria-pressed', button.getAttribute('data-filter') === filter ? 'true' : 'false');
-    });
-
-    publicationCards.forEach(function(card) {
-        var topics = card.getAttribute('data-topics').split(' ');
-        var isVisible = filter === 'all' || topics.indexOf(filter) !== -1;
-        card.hidden = !isVisible;
-        if (isVisible) visibleCount++;
-    });
-
-    publicationCount.textContent = visibleCount;
-}
-
-publicationButtons.forEach(function(button) {
-    button.addEventListener('click', function() {
-        setPublicationFilter(button.getAttribute('data-filter'));
-    });
-});
-
-Array.prototype.slice.call(document.querySelectorAll('[data-filter-link]')).forEach(function(link) {
-    link.addEventListener('click', function() {
-        setPublicationFilter(link.getAttribute('data-filter-link'));
-    });
-});
-
-document.addEventListener('click', function(e) {
-    var colors = ['#6c5ce7', '#00cec9', '#fdcb6e', '#e84393', '#55efc4', '#a29bfe'];
-    for (var i = 0; i < 8; i++) {
-        var confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = e.clientX + (Math.random() - 0.5) * 60 + 'px';
-        confetti.style.top = e.clientY + 'px';
-        confetti.style.width = Math.random() * 8 + 4 + 'px';
-        confetti.style.height = Math.random() * 8 + 4 + 'px';
-        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-        confetti.style.animationDuration = Math.random() * 1.5 + 1 + 's';
-        document.body.appendChild(confetti);
-        (function(el) {
-            setTimeout(function() { el.remove(); }, 2500);
-        })(confetti);
-    }
-});
-</script>
-
+        Array.prototype.slice.call(document.querySelectorAll('[data-filter-link]')).forEach(function(link) {
+            link.addEventListener('click', function() {
+                applyFilter(link.dataset.filterLink);
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
