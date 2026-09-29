@@ -707,6 +707,39 @@
             clip-path: inherit;
         }
 
+        .cyber-core {
+            width: 76px;
+            height: 76px;
+            color: var(--primary);
+            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.65));
+        }
+
+        .cyber-core .core-orbit {
+            transform-origin: 38px 38px;
+            animation: coreSpin 7s linear infinite;
+        }
+
+        .cyber-core .core-orbit-reverse {
+            transform-origin: 38px 38px;
+            animation: coreSpinReverse 5s linear infinite;
+        }
+
+        .cyber-core .core-pulse {
+            animation: corePulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes coreSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes coreSpinReverse {
+            to { transform: rotate(-360deg); }
+        }
+
+        @keyframes corePulse {
+            50% { opacity: 0.35; transform: scale(0.82); transform-origin: center; }
+        }
+
         @keyframes avatarGlow {
             0%, 100% { filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.35)); }
             50% { filter: drop-shadow(0 0 16px rgba(255, 46, 151, 0.45)); }
@@ -852,6 +885,60 @@
             background: rgba(0, 240, 255, 0.035);
         }
 
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .topic-item {
+            position: relative;
+            min-height: 150px;
+            padding: 20px 20px 18px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.16);
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.055), rgba(255, 46, 151, 0.025));
+            clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+            transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+        }
+
+        .topic-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 240, 255, 0.55);
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(255, 46, 151, 0.05));
+        }
+
+        .topic-id {
+            display: block;
+            margin-bottom: 14px;
+            color: var(--pink);
+            font-size: 0.66rem;
+            letter-spacing: 0.18em;
+        }
+
+        .topic-item h3 {
+            margin: 0 0 7px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .topic-item p {
+            margin: 0;
+            font-size: 0.87rem;
+            line-height: 1.6;
+        }
+
+        .topic-item::after {
+            content: "";
+            position: absolute;
+            right: -16px;
+            bottom: -16px;
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(0, 240, 255, 0.18);
+            transform: rotate(45deg);
+        }
+
         .project-link {
             border-radius: 2px;
             color: var(--primary);
@@ -900,6 +987,33 @@
             letter-spacing: 0.08em;
         }
 
+        .footer .visitor-counter {
+            min-height: 0;
+            margin: 16px auto 14px;
+            padding: 5px;
+            opacity: 0.68;
+            transition: opacity 0.2s ease, border-color 0.2s ease;
+        }
+
+        .footer .visitor-counter:hover {
+            opacity: 1;
+            border-color: var(--primary);
+        }
+
+        .footer .visitor-counter img {
+            display: block;
+            width: 120px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .footer .visitor-note {
+            margin: 0;
+            font-size: 0.64rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
         @media (max-width: 600px) {
             h1 { font-size: 1.6em; }
             .card { padding: 20px; }
@@ -915,6 +1029,8 @@
             .quote { font-size: 0.9rem; }
             .card::before { display: none; }
             .project-highlight { flex-direction: column; }
+            .topic-grid { grid-template-columns: 1fr; }
+            .topic-item { min-height: 0; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1013,7 +1129,7 @@
 
 <!-- Cute Cat Character -->
 <div class="cat-container" id="cat" title="Meow!">
-    <div class="cat-bubble">Meow~ 喵~ 🐱</div>
+    <div class="cat-bubble">Meow~ 🐱</div>
     <svg width="65" height="70" viewBox="0 0 65 70" xmlns="http://www.w3.org/2000/svg">
         <polygon points="10,28 5,6 20,22" fill="#e84393"/>
         <polygon points="55,28 60,6 45,22" fill="#e84393"/>
@@ -1048,9 +1164,21 @@
     <header>
         <div class="hero-kicker">Researching intelligence in motion</div>
         <div class="avatar-ring">
-            <div class="inner"><span class="wave">👋</span></div>
+            <div class="inner">
+                <svg class="cyber-core" viewBox="0 0 76 76" role="img" aria-label="JH neural core">
+                    <g class="core-orbit" fill="none" stroke="currentColor" stroke-width="1.2">
+                        <circle cx="38" cy="38" r="29" stroke-dasharray="8 5"/>
+                        <path d="M38 5v8M38 63v8M5 38h8M63 38h8"/>
+                    </g>
+                    <g class="core-orbit-reverse" fill="none" stroke="#ff2e97" stroke-width="1.4">
+                        <rect x="19" y="19" width="38" height="38" transform="rotate(45 38 38)" stroke-dasharray="13 7"/>
+                    </g>
+                    <path d="M27 25v26M27 38h12M39 25v26M49 25v18c0 5-3 8-8 8" fill="none" stroke="#eafcff" stroke-width="3" stroke-linecap="square"/>
+                    <circle class="core-pulse" cx="38" cy="38" r="4" fill="#ffe66d"/>
+                </svg>
+            </div>
         </div>
-        <h1>Hi, I'm Jianhua Han (韩建华)</h1>
+        <h1>Hi, I'm Jianhua Han</h1>
         <p class="subtitle">Research Scientist · Building the Future of Physical AI</p>
         <div class="quote">"Intelligence can be defined as self-motivated skill-acquisition efficiency in unknown tasks and domains."</div>
         <div class="badges">
@@ -1087,6 +1215,43 @@
                 <span class="icon">🔬</span>
                 <div><div class="label">Focus</div><div class="value">VLM · VLA · Robotics · World Models</div></div>
             </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-deco">⌬</div>
+        <h2><span class="emoji">◈</span> Research Topics</h2>
+        <div class="topic-grid">
+            <article class="topic-item">
+                <span class="topic-id">TOPIC_01</span>
+                <h3>Multimodal Foundation Models</h3>
+                <p>Unified models that understand, reason, and generate across visual, linguistic, and embodied signals.</p>
+            </article>
+            <article class="topic-item">
+                <span class="topic-id">TOPIC_02</span>
+                <h3>Vision-Language-Action</h3>
+                <p>Connecting perception and language with precise, generalizable actions in real-world environments.</p>
+            </article>
+            <article class="topic-item">
+                <span class="topic-id">TOPIC_03</span>
+                <h3>World Models</h3>
+                <p>Learning predictive representations of physical dynamics for planning, simulation, and decision-making.</p>
+            </article>
+            <article class="topic-item">
+                <span class="topic-id">TOPIC_04</span>
+                <h3>Robotics</h3>
+                <p>Building adaptable embodied agents that acquire skills and improve through interaction and experience.</p>
+            </article>
+            <article class="topic-item">
+                <span class="topic-id">TOPIC_05</span>
+                <h3>Autonomous Driving</h3>
+                <p>End-to-end systems for open-world scene understanding, forecasting, reasoning, and safe control.</p>
+            </article>
+            <article class="topic-item">
+                <span class="topic-id">TOPIC_06</span>
+                <h3>Open-World Perception</h3>
+                <p>Scalable visual recognition beyond fixed vocabularies, distributions, and predefined scenarios.</p>
+            </article>
         </div>
     </div>
 
@@ -1167,18 +1332,12 @@
         </ul>
     </div>
 
-    <div class="card visitor-stats">
-        <div class="card-deco">🌍</div>
-        <h2><span class="emoji">🌏</span> Visitors Around the World</h2>
-        <p>Thanks for stopping by! This counter shows page views and where visitors come from.</p>
+    <div class="footer">
+        <div class="footer-chars">⌬ ◈ ⟡</div>
         <a class="visitor-counter" href="https://info.flagcounter.com/R4Aj" target="_blank" rel="noopener noreferrer" aria-label="View detailed visitor statistics">
             <img src="https://s01.flagcounter.com/count2/R4Aj/bg_1A1A2E/txt_E2E2E2/border_6C5CE7/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Visitor count and countries" loading="lazy">
         </a>
-        <div class="visitor-note">Country-level aggregate statistics · no cookies set by this page</div>
-    </div>
-
-    <div class="footer">
-        <div class="footer-chars">🎈🤖🐱🎉🚀🌟</div>
+        <div class="visitor-note">Global visitor signal</div>
         <p>Made with ☕ and curiosity · © 2026 Jianhua Han</p>
     </div>
 </div>
@@ -1216,7 +1375,7 @@
     }
 })();
 
-var robotMessages = ['Welcome! 🎉', 'Nice to meet you!', 'Have a great day! ☀️', 'Beep boop! 🤖', "Let's build AI! 🚀", '你好呀！👋'];
+var robotMessages = ['SYSTEM ONLINE', 'Neural link stable', 'Exploring the unknown', 'Signal acquired', "Let's build intelligence", 'Welcome, researcher'];
 var robot = document.getElementById('robot');
 robot.addEventListener('click', function() {
     var bubble = robot.querySelector('.speech-bubble');
@@ -1229,7 +1388,7 @@ robot.addEventListener('click', function() {
     }, 2000);
 });
 
-var catMessages = ['Meow~ 喵~ 🐱', 'Purrrr~ 呼噜噜', '摸摸我！🐾', 'Nya~ ❤️', '🐟 想吃鱼！', 'Zzz... 💤'];
+var catMessages = ['Meow~ 🐱', 'Purrrr~', 'System cat online', 'Nya~ ❤️', 'Fish protocol ready', 'Zzz... 💤'];
 var cat = document.getElementById('cat');
 cat.addEventListener('click', function() {
     var bubble = cat.querySelector('.cat-bubble');
