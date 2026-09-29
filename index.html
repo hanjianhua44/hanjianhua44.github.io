@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jianhua Han - Profile</title>
+    <meta name="description" content="Jianhua Han — research scientist exploring multimodal foundation models, robotics, autonomous driving, VLA and world models for Physical AI.">
+    <meta name="theme-color" content="#05070d">
+    <title>Jianhua Han · Physical AI Research</title>
     <style>
         :root {
             --primary: #6c5ce7;
@@ -554,16 +556,379 @@
             }
         }
 
+        /* === Cyberpunk Research Interface === */
+        :root {
+            --primary: #00f0ff;
+            --secondary: #7cff6b;
+            --accent: #ffe66d;
+            --pink: #ff2e97;
+            --bg: #05070d;
+            --card: rgba(10, 18, 32, 0.88);
+            --card-hover: rgba(13, 25, 43, 0.96);
+            --text: #eafcff;
+            --text-muted: #8ca9b5;
+            --line: rgba(0, 240, 255, 0.2);
+        }
+
+        body {
+            font-family: "Segoe UI", "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+            background:
+                radial-gradient(circle at 15% 18%, rgba(255, 46, 151, 0.13), transparent 26rem),
+                radial-gradient(circle at 86% 26%, rgba(0, 240, 255, 0.11), transparent 30rem),
+                linear-gradient(180deg, #05070d 0%, #070b14 52%, #03050a 100%);
+            letter-spacing: 0.01em;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0,
+                transparent 3px,
+                rgba(0, 240, 255, 0.018) 4px
+            );
+            mix-blend-mode: screen;
+        }
+
+        .cyber-grid {
+            position: fixed;
+            left: -20%;
+            right: -20%;
+            bottom: -12vh;
+            height: 52vh;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.19;
+            transform: perspective(340px) rotateX(63deg);
+            transform-origin: bottom;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.7) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.7) 1px, transparent 1px);
+            background-size: 52px 36px;
+            mask-image: linear-gradient(to top, #000 35%, transparent 100%);
+        }
+
+        .bunting,
+        .balloon-wrap,
+        .floating-chars,
+        .cat-container {
+            display: none;
+        }
+
+        .stars {
+            opacity: 0.34;
+        }
+
+        .container {
+            max-width: 980px;
+            padding-top: 30px;
+            counter-reset: module;
+        }
+
+        .system-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 10px 14px;
+            border: 1px solid var(--line);
+            border-top-color: rgba(0, 240, 255, 0.65);
+            background: rgba(4, 10, 18, 0.76);
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.06);
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+        }
+
+        .system-bar strong {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .signal {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: var(--secondary);
+            box-shadow: 0 0 10px var(--secondary);
+            animation: pulseSignal 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulseSignal {
+            50% { opacity: 0.35; }
+        }
+
+        header {
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 72px 0 56px;
+        }
+
+        .hero-kicker {
+            color: var(--primary);
+            font-size: 0.76rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-kicker::before,
+        .hero-kicker::after {
+            content: "//";
+            color: var(--pink);
+            margin: 0 10px;
+        }
+
+        .avatar-ring {
+            width: 112px;
+            height: 112px;
+            border-radius: 4px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--primary), transparent 35%, var(--pink));
+            clip-path: polygon(16% 0, 84% 0, 100% 16%, 100% 84%, 84% 100%, 16% 100%, 0 84%, 0 16%);
+            animation: avatarGlow 3.5s ease-in-out infinite;
+        }
+
+        .avatar-ring .inner {
+            border-radius: 3px;
+            background: #07101c;
+            clip-path: inherit;
+        }
+
+        @keyframes avatarGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.35)); }
+            50% { filter: drop-shadow(0 0 16px rgba(255, 46, 151, 0.45)); }
+        }
+
+        h1 {
+            position: relative;
+            font-size: clamp(2.1rem, 6vw, 4rem);
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #fff 5%, var(--primary) 46%, #fff 52%, var(--pink) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            filter: drop-shadow(3px 3px 0 rgba(255, 46, 151, 0.22));
+        }
+
+        .subtitle {
+            color: var(--text);
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            font-size: 0.88rem;
+        }
+
+        .quote {
+            max-width: 790px;
+            margin-top: 22px;
+            padding: 16px 22px;
+            border: 1px solid rgba(255, 230, 109, 0.34);
+            border-left: 3px solid var(--accent);
+            border-radius: 0;
+            background: rgba(255, 230, 109, 0.035);
+            color: var(--accent);
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            box-shadow: inset 14px 0 25px rgba(255, 230, 109, 0.035);
+        }
+
+        .quote::before {
+            content: "THESIS_";
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-muted);
+            font-family: Consolas, monospace;
+            font-size: 0.65rem;
+            font-style: normal;
+            letter-spacing: 0.22em;
+        }
+
+        .badge {
+            border-radius: 2px;
+            border-color: var(--line);
+            background: rgba(6, 16, 27, 0.82);
+            font-size: 0.82rem;
+            letter-spacing: 0.04em;
+            clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
+        }
+
+        .badge:hover {
+            color: #041014;
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 22px rgba(0, 240, 255, 0.35);
+        }
+
+        .card {
+            counter-increment: module;
+            border-radius: 2px;
+            border: 1px solid var(--line);
+            border-top-color: rgba(0, 240, 255, 0.58);
+            background:
+                linear-gradient(135deg, rgba(0, 240, 255, 0.035), transparent 32%),
+                var(--card);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 16px 60px rgba(0, 0, 0, 0.28);
+            clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+        }
+
+        .card::before {
+            content: "MODULE_0" counter(module);
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            color: rgba(0, 240, 255, 0.35);
+            font-size: 0.62rem;
+            letter-spacing: 0.16em;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--pink), transparent);
+            box-shadow: 0 0 12px var(--pink);
+        }
+
+        .card:hover {
+            border-color: rgba(0, 240, 255, 0.55);
+            background-color: var(--card-hover);
+            box-shadow: 0 18px 65px rgba(0, 240, 255, 0.1);
+        }
+
+        .card-deco {
+            top: auto;
+            right: 18px;
+            bottom: 10px;
+            opacity: 0.07;
+            filter: saturate(0) brightness(2);
+        }
+
+        .card h2 {
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .card h2::after {
+            content: "";
+            width: 56px;
+            height: 1px;
+            margin-left: 6px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            letter-spacing: 0.02em;
+        }
+
+        .card ul li::before {
+            content: ">";
+            color: var(--pink);
+        }
+
+        .project-highlight,
+        .info-item,
+        .visitor-counter {
+            border-radius: 2px;
+            border-color: var(--line);
+            background: rgba(0, 240, 255, 0.035);
+        }
+
+        .project-link {
+            border-radius: 2px;
+            color: var(--primary);
+        }
+
+        .paper-tag {
+            border-radius: 1px;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-new {
+            color: #06120d;
+            background: var(--secondary);
+        }
+
+        .tag-venue {
+            color: var(--primary);
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.18);
+        }
+
+        .timeline-item {
+            border-left-color: rgba(0, 240, 255, 0.27);
+        }
+
+        .timeline-item::before {
+            border-radius: 0;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            transform: rotate(45deg);
+        }
+
+        .hiring-card {
+            background:
+                linear-gradient(120deg, rgba(255, 46, 151, 0.09), transparent 45%),
+                var(--card);
+            border-left: 2px solid var(--pink);
+        }
+
+        .robot-container {
+            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.45)) hue-rotate(75deg);
+        }
+
+        .footer {
+            border-top-color: var(--line);
+            letter-spacing: 0.08em;
+        }
+
         @media (max-width: 600px) {
             h1 { font-size: 1.6em; }
             .card { padding: 20px; }
             header { padding: 40px 0 24px; }
             .robot-container, .cat-container { display: none; }
             .bunting { height: 40px; }
+            .container { padding: 16px 16px 48px; }
+            .system-bar { font-size: 0.58rem; letter-spacing: 0.08em; }
+            .system-bar .optional-status { display: none; }
+            header { min-height: 500px; }
+            h1 { font-size: clamp(2rem, 12vw, 3rem); }
+            .subtitle { font-size: 0.7rem; line-height: 1.7; }
+            .quote { font-size: 0.9rem; }
+            .card::before { display: none; }
+            .project-highlight { flex-direction: column; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
 <body>
+
+<div class="cyber-grid" aria-hidden="true"></div>
 
 <!-- Bunting / Party Flags -->
 <div class="bunting">
@@ -674,13 +1039,20 @@
 </div>
 
 <div class="container">
+    <div class="system-bar" aria-label="Research system status">
+        <span><span class="signal"></span><strong>Research Node Online</strong></span>
+        <span class="optional-status">Physical Intelligence // Shanghai // 2026</span>
+        <span>SYS.JH_01</span>
+    </div>
+
     <header>
+        <div class="hero-kicker">Researching intelligence in motion</div>
         <div class="avatar-ring">
             <div class="inner"><span class="wave">👋</span></div>
         </div>
         <h1>Hi, I'm Jianhua Han (韩建华)</h1>
         <p class="subtitle">Research Scientist · Building the Future of Physical AI</p>
-        <div class="quote">"Intelligence can be defined as self-motivated skill-acquisition efficiency."</div>
+        <div class="quote">"Intelligence can be defined as self-motivated skill-acquisition efficiency in unknown tasks and domains."</div>
         <div class="badges">
             <a class="badge" href="https://scholar.google.com/citations?user=OEPMQEMAAAAJ&hl=en" target="_blank">
                 <span class="icon">🎓</span> Google Scholar
@@ -701,7 +1073,7 @@
         <div class="card-deco">🧑‍🔬</div>
         <h2><span class="emoji">🚀</span> About Me</h2>
         <p>Currently a <strong>Research Scientist</strong> at <strong>2030 Lab, Yinwang Intelligent Technology Co. Ltd</strong>. Previously at <strong>Huawei Noah's Ark Lab</strong>.</p>
-        <p>My research spans <strong>Multimodal Foundation Models</strong>, <strong>Open-World Perception</strong>, <strong>Autonomous Driving</strong>, <strong>VLA Models</strong>, and <strong>World Models</strong> — turning visual understanding and reasoning into reliable physical-world decisions.</p>
+        <p>My research spans <strong>Multimodal Foundation Models</strong>, <strong>Robotics</strong>, <strong>Open-World Perception</strong>, <strong>Autonomous Driving</strong>, <strong>VLA Models</strong>, and <strong>World Models</strong> — turning visual understanding and reasoning into reliable physical-world decisions.</p>
         <div class="info-grid">
             <div class="info-item">
                 <span class="icon">📍</span>
@@ -713,7 +1085,7 @@
             </div>
             <div class="info-item">
                 <span class="icon">🔬</span>
-                <div><div class="label">Focus</div><div class="value">VLM · VLA · World Models</div></div>
+                <div><div class="label">Focus</div><div class="value">VLM · VLA · Robotics · World Models</div></div>
             </div>
         </div>
     </div>
